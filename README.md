@@ -226,7 +226,7 @@
 #
 ### ⭓ Features
 
-1. Development process info &nbsp;|&nbsp;  [ More-> ](#1-process)
+1. Development process info &nbsp;|&nbsp;  [ More-> ](#1-project-log)
 2. Project Resources &nbsp;|&nbsp;  [ More-> ](#2-project-resources)
 
 
@@ -254,9 +254,12 @@
 
 ____
 
-## 1. Process
+## 1. Project Log
 
+[2024-10-22-(YMD)-]
 1. Add Top Libraries and Plugins to the Project &nbsp;| &nbsp; [ Read -> ](./_assets/docs/doc-version-catalogs.md#13-top-libraries-and-plugins-for-project-development)
+2. Add App icon using Resource Manager > Image Asset
+
 
 <br>
 
