@@ -1,4 +1,4 @@
-package novalogics.android.styles.ui.theme
+package novalogics.android.styles.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
