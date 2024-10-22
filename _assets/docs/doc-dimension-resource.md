@@ -11,7 +11,7 @@ Dimension Standards in Android
 
 <hr>
 
-br>
+<br>
 <!-- ------------ 1. Advantages ------------ -->
 
 ## 1. Advantages of Using `dimens.xml` and `dimensionResource()`
@@ -62,6 +62,59 @@ br>
 By using `dimens.xml` and `dimensionResource()`, your app becomes easier to maintain, more flexible, and looks great on all devices.
 
 <hr>
+
+<br>
+
+<br>
+<!-- ------------ 2. Commonly Used Formats ------------ -->
+
+## 2. Commonly Used Formats for `dimens.xml`
+<br>
+
+1. **Descriptive Name + Size:**
+    - Names describe the usage and size (small, medium, large).
+    - **Example:**
+      ```xml
+      <dimen name="padding_small">4dp</dimen>
+      <dimen name="padding_large">16dp</dimen>
+      ```
+
+2. **Descriptive Name + Specific Value:**
+    - Names include usage type and the exact size (e.g., 4dp, 16dp).
+    - **Example:**
+      ```xml
+      <dimen name="padding_4dp">4dp</dimen>
+      <dimen name="margin_16dp">16dp</dimen>
+      ```
+
+3. **Combination of Type + Size:**
+    - Uses general size terms like `xsmall`, `small`, `medium`, `large`.
+    - **Example:**
+      ```xml
+      <dimen name="padding_xsmall">2dp</dimen>
+      <dimen name="margin_medium">8dp</dimen>
+      ```
+
+4. **Usage-Specific Dimensions:**
+    - For specific components (buttons, icons), dimensions are named accordingly.
+    - **Example:**
+      ```xml
+      <dimen name="button_padding_small">8dp</dimen>
+      <dimen name="icon_size_large">64dp</dimen>
+      ```
+
+5. **Dimensional Scaling Factors:**
+    - Simple numeric naming system, less descriptive.
+    - **Example:**
+      ```xml
+      <dimen name="dimens_2">2dp</dimen>
+      <dimen name="dimens_8">8dp</dimen>
+      ```
+
+#
+[ View Current Project's Dimens.xml  --> ](../../app/src/main/res/values/dimens.xml)
+
+#
 
 <br>
 
