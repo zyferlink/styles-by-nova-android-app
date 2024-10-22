@@ -119,3 +119,63 @@ By using `dimens.xml` and `dimensionResource()`, your app becomes easier to main
 <br>
 
 <br>
+<!-- ------------ 3. Using Dimens for Different Modes ------------ -->
+
+
+## 3. Using `dimens.xml` for Different Orientations, Night Mode, and Device Types
+<br>
+
+Yes, you can use `dimens.xml` files to handle different orientations, night mode, and various device types in Android. Here’s how you can do it:
+
+## 1. Different Orientations
+- Create separate `dimens.xml` files for portrait and landscape orientations.
+- **Example Structure:**
+    ```
+    res/
+      values/dimens.xml               // Default dimensions
+      values-land/dimens.xml           // Dimensions for landscape orientation
+    ```
+- In `values-land/dimens.xml`, define different dimension values that are appropriate for landscape mode.
+
+## 2. Night Mode
+- Provide specific dimension values for night mode using the `night` qualifier.
+- **Example Structure:**
+    ```
+    res/
+      values/dimens.xml                // Default dimensions
+      values-night/dimens.xml           // Dimensions for night mode
+    ```
+- In `values-night/dimens.xml`, adjust dimension values for better visibility or aesthetics in dark themes.
+
+## 3. Different Screen Sizes and Densities
+- Create different `dimens.xml` files for different screen sizes (e.g., small, normal, large) and densities (e.g., mdpi, hdpi, xhdpi).
+- **Example Structure:**
+    ```
+    res/
+      values-sw600dp/dimens.xml        // For devices with a minimum width of 600dp
+      values-xhdpi/dimens.xml           // For extra-high-density screens
+    ```
+
+## 4. Combining Qualifiers
+- Combine qualifiers to create more specific configurations.
+- **Example Structure:**
+    ```
+    res/
+      values-land-sw600dp/dimens.xml   // Landscape for devices with a minimum width of 600dp
+      values-night-land/dimens.xml       // Night mode for landscape orientation
+    ```
+
+## Advantages
+- **Customization:** Tailor your app's dimensions to provide a better user experience across different environments and devices.
+- **Maintainability:** Centralize dimensions in `dimens.xml` for easy management and adjustments for different configurations.
+
+<br>
+
+---
+<br>
+
+<kbd>[&nbsp; ◄ &nbsp;  BACK TO Project &nbsp;&nbsp;&nbsp;](../../README.md#-project-documents) </kbd>
+
+<br>
+
+---
