@@ -74,3 +74,56 @@ dependencies {
 ```
 
 <br>
+
+<!-- ------------ 1.2 Version Catalog Plugins ------------ -->
+
+#
+## 1.2 Version Catalog Plugins
+
+<br>
+
+**( OLD way )**
+> Application Gradle | app /-> build.gradle.kts 
+
+```java
+plugins {
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+}
+
+```
+#
+**( NEW way )**
+> libs.versions.toml
+
+```toml
+[version]
+agp = "8.5.2"
+kotlin = "2.0.20"
+
+# Here is the library section
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+```
+
+#
+
+> Application Gradle | app /-> build.gradle.kts
+
+```java
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
+}
+```
+
+<br>
+
+<br>
+
+<br>
+
+
