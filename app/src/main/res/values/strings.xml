@@ -1,3 +1,65 @@
 <resources>
     <string name="app_name">Styles by Nova</string>
+
+    <string name="styles">Styles</string>
+    <string name="by_nova">by Nova</string>
+
+    <string name="stay_stylish_for_any_event">STAY STYLISH FOR ANY EVENT</string>
+
+    <string name="back_button">Back</string>
+
+    <string name="home">Home</string>
+    <string name="category">Category</string>
+    <string name="trending">Trending</string>
+    <string name="you">You</string>
+
+    <string name="please_wait">Please wait…</string>
+
+    <string-array name="tab_items">
+        <item>Home</item>
+        <item>Category</item>
+        <item>Trending</item>
+        <item>You</item>
+    </string-array>
+
+    <!-- Event categories -->
+    <string name="evening">Evening</string>
+    <string name="special_event">Special Event</string>
+    <string name="cocktail_party">Cocktail Party</string>
+    <string name="formal_black_tie">Formal/Black Tie</string>
+    <string name="weddings">Weddings</string>
+    <string name="prom_or_formal_dances">Prom or Formal Dances</string>
+    <string name="graduation">Graduation</string>
+    <string name="brunch_with_friends">Brunch with Friends</string>
+    <string name="beach_days">Beach Days</string>
+    <string name="outdoor_festivals">Outdoor Festivals</string>
+    <string name="everyday_essence">Everyday Essence</string>
+    <string name="date_nights">Date Nights</string>
+
+    <!-- Women events -->
+    <string name="twilight_elegance">Twilight Elegance</string>
+    <string name="gala_glamour">Gala Glamour</string>
+    <string name="mix_and_mingle">Mix &amp; Mingle</string>
+    <string name="elegant_affair">Elegant Affair</string>
+    <string name="eternal_elegance">Eternal Elegance</string>
+    <string name="radiant_night">Radiant Night</string>
+    <string name="cap_and_gown_glam">Cap &amp; Gown Glam</string>
+    <string name="casual_couture">Casual Couture</string>
+    <string name="coastal_breeze">Coastal Breeze</string>
+    <string name="bohemian_vibes">Bohemian Vibes</string>
+    <string name="casual_chic">Casual Chic</string>
+
+    <!-- Men events -->
+    <string name="classic_command">Classic Command</string>
+    <string name="fearless_fierce">Fearless &amp; Fierce</string>
+    <string name="suave_soiree">Suave Soiree</string>
+    <string name="coastal_cool">Coastal Cool</string>
+    <string name="casual_conqueror">Casual Conqueror</string>
+    <string name="gentlemans_night">Gentleman’s Night</string>
+    <string name="rugged_freedom">Rugged Freedom</string>
+    <string name="executive_edge">Executive Edge</string>
+    <string name="festive_force">Festive Force</string>
+    <string name="everyday_grit">Everyday Grit</string>
+
+    <string name="event_item_content_description">Stylish event category</string>
 </resources>
