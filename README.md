@@ -266,6 +266,8 @@ ____
 3. Update Project Structure According to &nbsp;&nbsp;  [ Project Structure Document -> ](./_assets/docs/doc-project-structure.md)
 4. Add fonts, colors, shapes, dimes
 5. Update project Theme
+6. Add necessary Strings/Texts
+7. Add necessary images and icons
 
 
 <br>
