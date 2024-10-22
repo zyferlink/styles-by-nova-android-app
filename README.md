@@ -238,6 +238,7 @@
   
 2. **Jetpack Compose Project Structure Guide** &nbsp;|&nbsp;  [ Read -> ](./_assets/docs/doc-project-structure.md)
 
+3. **Dimension Standards in Android** &nbsp;|&nbsp;  [ Read -> ](./_assets/docs/doc-dimension-resource.md)
 
 #
 <div align="center">
@@ -263,7 +264,8 @@ ____
 1. Add Top Libraries and Plugins to the Project &nbsp;| &nbsp; [ More Info -> ](./_assets/docs/doc-version-catalogs.md#13-top-libraries-and-plugins-for-project-development)
 2. Add App icon using Resource Manager > Image Asset
 3. Update Project Structure According to &nbsp;&nbsp;  [ Project Structure Document -> ](./_assets/docs/doc-project-structure.md)
-4. Add fonts
+4. Add fonts, colors, shapes, dimes
+5. Update project Theme
 
 
 <br>
