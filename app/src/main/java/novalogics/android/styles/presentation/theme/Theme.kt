@@ -83,7 +83,7 @@ private val DarkColors = darkColorScheme(
 )
 
 @Composable
-fun NovaStylesTheme(
+fun StylesByNovaTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = false,

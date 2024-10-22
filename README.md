@@ -267,7 +267,9 @@ ____
 4. Add fonts, colors, shapes, dimes
 5. Update project Theme
 6. Add necessary Strings/Texts
-7. Add necessary images and icons
+7. Add necessary icons
+8. Add necessary images, placeholders
+9. Add Dagger hilt
 
 
 <br>
