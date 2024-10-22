@@ -270,6 +270,9 @@ ____
 7. Add necessary icons
 8. Add necessary images, placeholders
 9. Add Dagger hilt
+10. Add Common UI components
+11. Add Main screen
+12. Add Home screen
 
 
 <br>
