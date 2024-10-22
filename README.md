@@ -226,14 +226,19 @@
 #
 ### ⭓ Features
 
-1. Project Resources &nbsp;|&nbsp;  [ More-> ](#1-project-resources)
+1. Development process info &nbsp;|&nbsp;  [ More-> ](#1-project-log)
+2. Project Resources &nbsp;|&nbsp;  [ More-> ](#2-project-resources)
 
 
 #
 ### ⭓ Project Documents
 <br>
 
--Coming Soon-
+1. **Managing Dependencies with Version Catalogs** &nbsp;| &nbsp;  [ Read -> ](./_assets/docs/doc-version-catalogs.md)
+  
+2. **Jetpack Compose Project Structure Guide** &nbsp;|&nbsp;  [ Read -> ](./_assets/docs/doc-project-structure.md)
+
+3. **Dimension Standards in Android** &nbsp;|&nbsp;  [ Read -> ](./_assets/docs/doc-dimension-resource.md)
 
 #
 <div align="center">
@@ -253,17 +258,63 @@
 
 ____
 
-## 1. Project Resources
--Coming Soon-
+## 1. Project Log
+
+[2024 - OCT(10) - 22]
+1. Add Top Libraries and Plugins to the Project &nbsp;| &nbsp; [ More Info -> ](./_assets/docs/doc-version-catalogs.md#13-top-libraries-and-plugins-for-project-development)
+2. Add App icon using Resource Manager > Image Asset
+3. Update Project Structure According to &nbsp;&nbsp;  [ Project Structure Document -> ](./_assets/docs/doc-project-structure.md)
+4. Add fonts, colors, shapes, dimes
+5. Update project Theme
+6. Add necessary Strings/Texts
+7. Add necessary icons
+8. Add necessary images, placeholders
+9. Add Dagger hilt
+10. Add Common UI components
+11. Add Main screen
+12. Add Home screen
 
 
-Colours
+<br>
 
-https://material-foundation.github.io/material-theme-builder/
+#
+<kbd>[&nbsp; ► &nbsp;  BACK TO Project Notes  &nbsp;&nbsp;&nbsp;](#ᴠɪ--ᴘʀᴏᴊᴇᴄᴛ-ɴᴏᴛᴇꜱ) </kbd>
+____
 
-https://www.materialpalette.com/orange/brown
 
+
+## 2. Project Resources
+
+<br> 
+
+*Import : **Fonts** from*
+```yaml
+https://fonts.google.com/
+```
+
+<br> 
+
+
+*Import : **Colours** from*
+```yaml
 https://htmlcolorcodes.com/colors/
+```
+
+```yaml
+https://www.materialpalette.com/orange/brown
+```
+
+<br> 
+
+*Select : **Theme** from*
+
+```yaml
+https://material-foundation.github.io/material-theme-builder/
+```
+
+
+
+
 
 
 <br>
