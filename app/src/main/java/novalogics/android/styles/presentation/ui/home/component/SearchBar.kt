@@ -2,7 +2,6 @@ package novalogics.android.styles.presentation.ui.home.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,7 +9,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -60,4 +58,40 @@ fun SearchBar(
             unfocusedIndicatorColor = Color.Transparent
         )
     )
+}
+
+
+@Composable
+fun SearchBarStatic(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(
+                start = dimensionResource(id = R.dimen.padding_medium_16dp),
+                end = dimensionResource(id = R.dimen.padding_medium_16dp),
+                top = dimensionResource(id = R.dimen.padding_small_4dp),
+                bottom = dimensionResource(id = R.dimen.padding_regular_8dp),
+            )
+            .clickable(onClick = onClick) // Navigate to search UI on click
+            .background(MaterialTheme.colorScheme.surfaceVariant, shape = MaterialTheme.shapes.medium)
+            .height(40.dp), // Set a height for the search bar
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            imageVector = Icons.Default.Search,
+            contentDescription = "Search Icon",
+            modifier = Modifier.padding(start = 8.dp),
+            tint = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
+
+        )
+        Spacer(modifier = Modifier.width(8.dp)) // Space between icon and text
+        Text(
+            text = "Search...", // Placeholder text
+            style = TextStyle(fontSize = 16.sp), // Customize text size
+            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f) // Slightly transparent
+        )
+    }
 }
