@@ -226,14 +226,15 @@
 #
 ### ⭓ Features
 
-1. Project Resources &nbsp;|&nbsp;  [ More-> ](#1-project-resources)
+1. Development process info &nbsp;|&nbsp;  [ More-> ](#1-process)
+2. Project Resources &nbsp;|&nbsp;  [ More-> ](#2-project-resources)
 
 
 #
 ### ⭓ Project Documents
 <br>
 
--Coming Soon-
+1. **Managing Dependencies with Version Catalogs** &nbsp;| &nbsp;  [ Read -> ](./_assets/docs/doc-version-catalogs.md)
 
 #
 <div align="center">
@@ -253,8 +254,22 @@
 
 ____
 
-## 1. Project Resources
--Coming Soon-
+## 1. Process
+
+1. Add Top Libraries and Plugins to the Project &nbsp;| &nbsp; [ Read -> ](./_assets/docs/doc-version-catalogs.md#13-top-libraries-and-plugins-for-project-development)
+
+<br>
+
+#
+<kbd>[&nbsp; ► &nbsp;  BACK TO Project Notes  &nbsp;&nbsp;&nbsp;](#ᴠɪ--ᴘʀᴏᴊᴇᴄᴛ-ɴᴏᴛᴇꜱ) </kbd>
+____
+
+
+
+## 2. Project Resources
+
+<br> 
+
 
 
 Colours
