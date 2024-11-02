@@ -56,8 +56,20 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
-    val scrollState = rememberLazyListState()
+
     val uiState by viewModel.uiState.collectAsState()
+
+    ScreenUiContent(
+        uiState = uiState
+    )
+
+}
+
+@Composable
+fun ScreenUiContent(
+    uiState : HomeUiState,
+){
+    val scrollState = rememberLazyListState()
 
     Box(
         modifier = Modifier
@@ -224,31 +236,18 @@ fun EventItem(
 )
 @Composable
 fun HomeScreenPreview(){
+
+    val uiState = HomeUiState(
+        isLoading = false,
+        bannerData = HomeRepositoryOffline().getBannerUrls(),
+        eventData = HomeRepositoryOffline().getDemoEventsMen(),
+        data = null,
+        error = null
+    )
+
     StylesByNovaTheme {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(colorScheme.background)
-        ) {
-            TopAppBar(
-                modifier = Modifier
-            )
-            SearchBarStatic(
-                onClick = { },
-            )
-            HorizontalPager(
-                bannerUrls = HomeRepositoryOffline().getBannerUrls(),
-            )
-            StyledText(
-                stringResId = R.string.stay_stylish_for_any_event,
-                letterSpacing = R.dimen.Latter_space_small_2dp,
-                style = typography.displayMedium,
-                modifier = Modifier
-                    .padding( dimensionResource(id = R.dimen.padding_medium_16dp))
-            )
-            EventGridView(
-                events = HomeRepositoryOffline().getDemoEventsMen()
-            )
-        }
+        ScreenUiContent(
+            uiState = uiState
+        )
     }
 }
