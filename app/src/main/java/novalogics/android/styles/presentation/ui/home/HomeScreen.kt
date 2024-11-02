@@ -8,7 +8,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -54,7 +53,6 @@ import novalogics.android.styles.util.Constants
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
-    contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
 
     val uiState by viewModel.uiState.collectAsState()
@@ -236,13 +234,9 @@ fun EventItem(
 )
 @Composable
 fun HomeScreenPreview(){
-
     val uiState = HomeUiState(
-        isLoading = false,
         bannerData = HomeRepositoryOffline().getBannerUrls(),
         eventData = HomeRepositoryOffline().getDemoEventsMen(),
-        data = null,
-        error = null
     )
 
     StylesByNovaTheme {
