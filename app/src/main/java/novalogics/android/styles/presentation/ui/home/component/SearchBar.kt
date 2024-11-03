@@ -74,7 +74,7 @@ fun SearchBarStatic(
                 top = dimensionResource(id = R.dimen.padding_small_4dp),
                 bottom = dimensionResource(id = R.dimen.padding_regular_8dp),
             )
-            .clickable(onClick = onClick) // Navigate to search UI on click
+            .clickable(onClick = onClick)
             .background(MaterialTheme.colorScheme.surfaceVariant, shape = MaterialTheme.shapes.medium)
             .height(40.dp), // Set a height for the search bar
         verticalAlignment = Alignment.CenterVertically
@@ -84,13 +84,12 @@ fun SearchBarStatic(
             contentDescription = "Search Icon",
             modifier = Modifier.padding(start = 8.dp),
             tint = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
-
         )
         Spacer(modifier = Modifier.width(8.dp)) // Space between icon and text
         Text(
             text = "Search...", // Placeholder text
-            style = TextStyle(fontSize = 16.sp), // Customize text size
-            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f) // Slightly transparent
+            style = TextStyle(fontSize = 16.sp),
+            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
         )
     }
 }

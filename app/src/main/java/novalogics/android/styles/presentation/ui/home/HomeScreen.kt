@@ -130,14 +130,14 @@ fun HeaderSearchAndDropdown() {
         SearchBarStatic(
             onClick = { },
             modifier = Modifier
-                .weight(0.6f) // Only apply weight here, without fillMaxWidth()
+                .weight(0.6f)
         )
 
         CustomDropdown(
             items = dropdownItems,
             modifier = Modifier
                 .weight(0.4f)
-                .height(40.dp), // Set height here directly
+                .height(40.dp),
             shape = MaterialTheme.shapes.medium
         )
     }
