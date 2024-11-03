@@ -44,6 +44,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.styles.R
 import novalogics.android.styles.data.model.home.EventEntity
 import novalogics.android.styles.data.repository.HomeRepositoryOffline
+import novalogics.android.styles.data.type.MainCategory
 import novalogics.android.styles.ui.common.component.LoadingScreen
 import novalogics.android.styles.ui.common.component.StyledText
 import novalogics.android.styles.ui.theme.StylesByNovaTheme
@@ -62,13 +63,19 @@ fun HomeScreen(
     val uiState by viewModel.uiState.collectAsState()
 
     ScreenUiContent(
-        uiState = uiState
+        uiState = uiState,
+        onDropdownSelectionChange = { category->
+            viewModel.handleIntent(
+                HomeIntent.CategoryChangeActions(category)
+            )
+        }
     )
 }
 
 @Composable
 fun ScreenUiContent(
     uiState : HomeUiState,
+    onDropdownSelectionChange: (MainCategory) -> Unit
 ){
     val scrollState = rememberLazyListState()
 
@@ -98,7 +105,7 @@ fun ScreenUiContent(
             )
 
             HeaderSearchWithDropdown(
-                dropdownItems = uiState.categoryList
+                onDropdownSelectionChange = onDropdownSelectionChange
             )
 
             LazyColumn(
@@ -144,7 +151,7 @@ fun ScreenUiContent(
 
 @Composable
 fun HeaderSearchWithDropdown(
-    dropdownItems: List<String>
+    onDropdownSelectionChange: (MainCategory) -> Unit,
 ) {
     Row(modifier = Modifier
         .fillMaxWidth()
@@ -161,7 +168,7 @@ fun HeaderSearchWithDropdown(
         )
 
         CustomDropdown(
-            items = dropdownItems,
+            onSelectionChange = onDropdownSelectionChange,
             modifier = Modifier.weight(0.3f)
         )
     }
@@ -289,7 +296,8 @@ fun HomeScreenPreview(){
     StylesByNovaTheme {
 
         ScreenUiContent(
-            uiState = uiState
+            uiState = uiState,
+            onDropdownSelectionChange = {}
         )
 
     }
