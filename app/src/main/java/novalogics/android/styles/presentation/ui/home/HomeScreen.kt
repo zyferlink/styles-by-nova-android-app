@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -31,6 +32,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -43,6 +45,7 @@ import novalogics.android.styles.data.repository.HomeRepositoryOffline
 import novalogics.android.styles.presentation.common.component.LoadingScreen
 import novalogics.android.styles.presentation.common.component.StyledText
 import novalogics.android.styles.presentation.theme.StylesByNovaTheme
+import novalogics.android.styles.presentation.ui.home.component.CustomDropdown
 import novalogics.android.styles.presentation.ui.home.component.SearchBarStatic
 import novalogics.android.styles.presentation.ui.home.component.TopAppBar
 import novalogics.android.styles.presentation.ui.home.component.ViewPagerDotsIndicator
@@ -118,6 +121,28 @@ fun ScreenUiContent(
             LoadingScreen()
         }
     }
+}
+
+@Composable
+fun HeaderSearchAndDropdown(
+    bannerUrls: List<String>,
+) {
+
+    val dropdownItems = LocalContext.current.resources.getStringArray(R.array.dropdown_items).toList()
+
+    Row {
+        SearchBarStatic(
+            onClick = { },
+        )
+
+        CustomDropdown(
+            items = dropdownItems,
+            modifier = Modifier,
+            shape = MaterialTheme.shapes.medium
+        )
+    }
+
+
 }
 
 @Composable

@@ -22,6 +22,12 @@
         <item>You</item>
     </string-array>
 
+    <string-array name="dropdown_items">
+        <item>WOMEN</item>
+        <item>MEN</item>
+        <item>KIDS</item>
+    </string-array>
+
     <!-- Event categories -->
     <string name="evening">Evening</string>
     <string name="special_event">Special Event</string>
