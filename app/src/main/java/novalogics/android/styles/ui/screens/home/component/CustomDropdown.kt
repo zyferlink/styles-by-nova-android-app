@@ -22,32 +22,30 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import novalogics.android.styles.R
 
 @Composable
 fun CustomDropdown(
     items: List<String>,
+    onSelectionChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val isDropDownExpanded = remember {
-        mutableStateOf(false)
-    }
-
-    val itemPosition = remember {
-        mutableIntStateOf(0)
-    }
-
+    val isDropDownExpanded = remember { mutableStateOf(false) }
+    val itemPosition = remember { mutableIntStateOf(0) }
 
     Column(
         modifier = modifier
             .background(
-                color = MaterialTheme.colorScheme.surfaceVariant,
-                shape = MaterialTheme.shapes.medium.copy(bottomStart = CornerSize(0.dp), topStart = CornerSize(0.dp) )
+                color = colorScheme.surfaceVariant,
+                shape = MaterialTheme.shapes.medium.copy(
+                    bottomStart = CornerSize(0.dp),
+                    topStart = CornerSize(0.dp)
+                )
             )
-            .height(40.dp),
+            .height(dimensionResource(id = R.dimen.size_medium_40dp)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
@@ -61,14 +59,13 @@ fun CustomDropdown(
                 }
             ) {
                 Text(
-                    text = items[itemPosition.value],
-                    color = colorScheme.onSecondaryContainer,
-                    fontWeight = FontWeight.W400
+                    text = items[itemPosition.intValue],
+                    color = colorScheme.onSecondaryContainer
                 )
                 Icon(
                     painter = painterResource(id = R.drawable.ic_down_arrow),
                     contentDescription = "DropDown Icon",
-                    modifier = Modifier.padding(start = 4.dp),
+                    modifier = Modifier.padding(start = dimensionResource(id = R.dimen.padding_small_4dp)),
                     tint = colorScheme.onBackground.copy(alpha = 0.6f)
                 )
             }
@@ -88,7 +85,8 @@ fun CustomDropdown(
                         },
                         onClick = {
                             isDropDownExpanded.value = false
-                            itemPosition.value = index
+                            itemPosition.intValue = index
+                            onSelectionChange(items[index])
                         })
                 }
             }
