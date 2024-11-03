@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -75,7 +76,8 @@ fun SearchBarStatic(
                 bottom = dimensionResource(id = R.dimen.padding_regular_8dp),
             )
             .clickable(onClick = onClick)
-            .background(MaterialTheme.colorScheme.surfaceVariant, shape = MaterialTheme.shapes.medium)
+            .background(MaterialTheme.colorScheme.surfaceVariant,
+                shape = MaterialTheme.shapes.medium.copy(bottomEnd = CornerSize(0.dp), topEnd = CornerSize(0.dp) ))
             .height(40.dp), // Set a height for the search bar
         verticalAlignment = Alignment.CenterVertically
     ) {
