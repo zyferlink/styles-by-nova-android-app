@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import novalogics.android.styles.data.repository.HomeRepositoryOffline
+import novalogics.android.styles.util.Constants.DELAY_2_SECONDS
 import javax.inject.Inject
 
 @HiltViewModel
@@ -33,18 +34,10 @@ class HomeViewModel @Inject constructor(
 
         // side-effect handling
         when (intent) {
-            is HomeIntent.LoadData -> loadData()
+            is HomeIntent.LoadData -> loadDataOffline()
             is HomeIntent.CategoryChangeActions -> handleCategoryChangeActions()
             else -> {}
         }
-    }
-
-    private fun loadData(){
-
-    }
-
-    private fun handleCategoryChangeActions(){
-
     }
 
     init {
@@ -52,19 +45,31 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun loadDataOffline() {
-        _uiState.update { ui ->
-            ui.copy(
-                isLoading = true,
-                bannerData = repositoryOffline.getBannerUrls(),
-                eventData = repositoryOffline.getDemoEventsWomen()
-            )
-        }
-
         viewModelScope.launch {
-            delay(2000)
-            _uiState.update { it.copy(isLoading = false) }
+            _uiState.update { currentUiState ->
+                currentUiState.copy(
+                    isLoading = true,
+                    bannerItemList = repositoryOffline.getBannerUrls(),
+                    eventCategoryList = repositoryOffline.getDemoEventsWomen()
+                )
+            }
+
+            delay(DELAY_2_SECONDS)
+
+            _uiState.update { currentUiState ->
+                currentUiState.copy(isLoading = false)
+            }
         }
     }
+
+
+    private fun handleCategoryChangeActions(){
+
+    }
+
+
+
+
 
 
     fun handleError() {
