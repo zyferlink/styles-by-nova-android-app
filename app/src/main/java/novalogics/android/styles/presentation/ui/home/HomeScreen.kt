@@ -83,8 +83,8 @@ fun ScreenUiContent(
             modifier = Modifier
                 .alpha(0.1f)
                 .fillMaxWidth()
-                .height(240.dp)
-                .align(Alignment.BottomEnd),
+                .height(dimensionResource(id = R.dimen.size_3xlarge_242dp))
+                .align(Alignment.BottomCenter),
             contentScale = ContentScale.FillBounds
         )
 
@@ -96,6 +96,7 @@ fun ScreenUiContent(
             TopAppBar(
                 modifier = Modifier
             )
+
             HeaderSearchAndDropdown()
 
             LazyColumn(
@@ -155,15 +156,12 @@ fun HeaderSearchAndDropdown() {
     ) {
         SearchBarStatic(
             onClick = { },
-            modifier = Modifier
-                .weight(0.7f)
+            modifier = Modifier.weight(0.7f)
         )
 
         CustomDropdown(
             items = dropdownItems,
-            modifier = Modifier
-                .weight(0.3f)
-                .height(40.dp),
+            modifier = Modifier.weight(0.3f)
         )
     }
 }
@@ -223,7 +221,7 @@ fun EventItem(
 ) {
     Column(
         modifier = Modifier
-            .padding(12.dp)
+            .padding(dimensionResource(id = R.dimen.padding_regular_12dp))
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -231,13 +229,13 @@ fun EventItem(
             modifier = Modifier
                 .fillMaxWidth(0.85f)
                 .shadow(
-                    elevation = 4.dp,
+                    elevation = dimensionResource(id = R.dimen.elevation_medium_4dp),
                     shape = MaterialTheme.shapes.medium,
                     ambientColor = colorScheme.onBackground,
                     spotColor = colorScheme.onBackground
                 ),
             elevation = CardDefaults.cardElevation(
-                defaultElevation = 4.dp
+                defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
             ),
             shape = MaterialTheme.shapes.medium
         ) {
@@ -287,10 +285,11 @@ fun HomeScreenPreview(){
         bannerData = HomeRepositoryOffline().getBannerUrls(),
         eventData = HomeRepositoryOffline().getDemoEventsWomen(),
     )
-
     StylesByNovaTheme {
+
         ScreenUiContent(
             uiState = uiState
         )
+
     }
 }

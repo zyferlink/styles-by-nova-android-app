@@ -34,7 +34,7 @@ fun ViewPagerUnit(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(dimensionResource(id = R.dimen.size_3xlarge_248dp))
+            .height(dimensionResource(id = R.dimen.size_3xlarge_242dp))
             .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
