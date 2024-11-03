@@ -119,11 +119,17 @@ fun ScreenUiContent(
                         stringResId = R.string.stay_stylish_for_any_event,
                         letterSpacing = R.dimen.letter_space_small_1dp,
                         style = typography.displayMedium,
+                        fontSize = R.dimen.text_size_large_20sp,
                         fontWeight = FontWeight.Thin,
                         textAlign = TextAlign.Start,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(dimensionResource(id = R.dimen.padding_medium_16dp))
+                            .padding(
+                                top = dimensionResource(id = R.dimen.padding_medium_16dp),
+                                bottom = dimensionResource(id = R.dimen.padding_medium_16dp),
+                                start = dimensionResource(id = R.dimen.padding_large_24dp),
+                                end = dimensionResource(id = R.dimen.padding_medium_16dp)
+                            )
                     )
                 }
                 item {
@@ -230,15 +236,15 @@ fun EventItem(
     ) {
         ElevatedCard(
             modifier = Modifier
-                .fillMaxWidth(0.8f)
+                .fillMaxWidth(0.85f)
                 .shadow(
-                    elevation = 8.dp, // Custom elevation level
+                    elevation = 4.dp, // Custom elevation level
                     shape = MaterialTheme.shapes.medium, // Custom shape
-                    ambientColor = Color.Black, // Ambient shadow color
-                    spotColor = Color.Black// Spot shadow color with transparency
+                    ambientColor = colorScheme.onBackground, // Ambient shadow color
+                    spotColor = colorScheme.onBackground// Spot shadow color with transparency
                 ),
             elevation = CardDefaults.cardElevation(
-                defaultElevation = 12.dp
+                defaultElevation = 4.dp
             ),
             shape = MaterialTheme.shapes.medium
         ) {
@@ -246,7 +252,7 @@ fun EventItem(
                 painter = painterResource(id = event.imageResId),
                 contentDescription = stringResource(id = R.string.event_item_content_description),
                 modifier = Modifier
-                    .height(180.dp)
+                    .height(170.dp)
                     .background(colorScheme.onBackground),
                 contentScale = ContentScale.Crop
             )

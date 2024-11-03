@@ -28,7 +28,7 @@ class HomeViewModel @Inject constructor(
             ui.copy(
                 isLoading = true,
                 bannerData = repositoryOffline.getBannerUrls(),
-                eventData = repositoryOffline.getDemoEventsMen()
+                eventData = repositoryOffline.getDemoEventsWomen()
             )
         }
 
