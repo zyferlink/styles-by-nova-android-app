@@ -1,6 +1,7 @@
 package novalogics.android.styles.ui.screens.home.component
 
 import androidx.annotation.DrawableRes
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -15,6 +16,12 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -25,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
+import kotlinx.coroutines.delay
 import novalogics.android.styles.R
 import novalogics.android.styles.data.type.MainCategory
 
@@ -44,22 +52,35 @@ fun ViewPagerUnit(
 
         if(pageIndex == 0){
 
-            val background =
-                if (category == MainCategory.MEN) R.drawable.img_banner_bg_2
-                else R.drawable.img_banner_bg_1
+            val backgroundResIds: List<Int> = listOf(
+                R.drawable.img_banner_bg_1,
+                R.drawable.img_banner_bg_2,
+                R.drawable.img_banner_bg_3
+            )
 
             val foreground =
                 if (category == MainCategory.MEN) R.drawable.img_banner_men_1
                 else R.drawable.img_banner_women_1
 
-            Image(
-                painter = painterResource(id = background),
-                contentDescription = "Loading placeholder",
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
-                contentScale = ContentScale.FillBounds
-            )
+
+            var index by remember { mutableIntStateOf(0) }
+
+            // Update the index every 10 seconds
+            LaunchedEffect(key1 = index) {
+                delay(4000L) // 10 seconds delay
+                index = (index + 1) % backgroundResIds.size // Cycle through images
+            }
+
+            Crossfade(targetState = index, label = "") { currentIndex ->
+                Image(
+                    painter = painterResource(id = backgroundResIds[currentIndex]),
+                    contentDescription = "Background Image",
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
+                    contentScale = ContentScale.FillBounds
+                )
+            }
             Image(
                 painter = painterResource(id = foreground),
                 contentDescription = "Loading placeholder",
