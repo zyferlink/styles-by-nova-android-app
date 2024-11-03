@@ -87,9 +87,7 @@ fun ScreenUiContent(
             TopAppBar(
                 modifier = Modifier
             )
-            SearchBarStatic(
-                onClick = { },
-            )
+            HeaderSearchAndDropdown()
 
             LazyColumn(
                 state = scrollState,
@@ -124,25 +122,25 @@ fun ScreenUiContent(
 }
 
 @Composable
-fun HeaderSearchAndDropdown(
-    bannerUrls: List<String>,
-) {
+fun HeaderSearchAndDropdown() {
 
     val dropdownItems = LocalContext.current.resources.getStringArray(R.array.dropdown_items).toList()
 
-    Row {
+    Row(modifier = Modifier.fillMaxWidth()) {
         SearchBarStatic(
             onClick = { },
+            modifier = Modifier
+                .weight(0.6f) // Only apply weight here, without fillMaxWidth()
         )
 
         CustomDropdown(
             items = dropdownItems,
-            modifier = Modifier,
+            modifier = Modifier
+                .weight(0.4f)
+                .height(40.dp), // Set height here directly
             shape = MaterialTheme.shapes.medium
         )
     }
-
-
 }
 
 @Composable

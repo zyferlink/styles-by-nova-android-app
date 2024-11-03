@@ -38,8 +38,7 @@ fun CustomDropdown(
         BasicTextField(
             value = selectedItem,
             onValueChange = {},
-            modifier = Modifier
-                .fillMaxWidth()
+            modifier = modifier
                 .background(Color.LightGray, shape) // Custom shape for text field
                 .exposedDropdownSize()
                 .clickable { expanded = true },
@@ -49,7 +48,7 @@ fun CustomDropdown(
         ExposedDropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false },
-            modifier = Modifier
+            modifier = modifier
                 .clip(shape) // Custom shape for dropdown menu
                 .background(Color.White)
         ) {
@@ -59,8 +58,7 @@ fun CustomDropdown(
                         selectedItem = item
                         expanded = false
                     },
-                    modifier = Modifier
-                        .fillMaxWidth()
+                    modifier = modifier
                         .background(Color.White, shape)
                 ) {
                     Text(text = item, fontSize = 16.sp)

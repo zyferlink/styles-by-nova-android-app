@@ -68,7 +68,6 @@ fun SearchBarStatic(
 ) {
     Row(
         modifier = modifier
-            .fillMaxWidth()
             .padding(
                 start = dimensionResource(id = R.dimen.padding_medium_16dp),
                 end = dimensionResource(id = R.dimen.padding_medium_16dp),
