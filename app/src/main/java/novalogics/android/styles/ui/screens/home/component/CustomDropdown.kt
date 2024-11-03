@@ -26,15 +26,19 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import novalogics.android.styles.R
+import novalogics.android.styles.data.type.MainCategory
 
 @Composable
 fun CustomDropdown(
-    items: List<String>,
-    onSelectionChange: (String) -> Unit,
+    onSelectionChange: (MainCategory) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val isDropDownExpanded = remember { mutableStateOf(false) }
     val itemPosition = remember { mutableIntStateOf(0) }
+
+    val categories = MainCategory.entries
+        .filter { it != MainCategory.NONE }
+        .map { it.name }
 
     Column(
         modifier = modifier
@@ -59,7 +63,7 @@ fun CustomDropdown(
                 }
             ) {
                 Text(
-                    text = items[itemPosition.intValue],
+                    text = categories[itemPosition.intValue],
                     color = colorScheme.onSecondaryContainer
                 )
                 Icon(
@@ -75,7 +79,7 @@ fun CustomDropdown(
                     isDropDownExpanded.value = false
                 }) {
 
-                items.forEachIndexed { index, item ->
+                categories.forEachIndexed { index, item ->
                     DropdownMenuItem(
                         text = {
                             Text(
@@ -86,7 +90,9 @@ fun CustomDropdown(
                         onClick = {
                             isDropDownExpanded.value = false
                             itemPosition.intValue = index
-                            onSelectionChange(items[index])
+                            MainCategory.entries.getOrNull(index)?.let {
+                                category-> onSelectionChange(category)
+                            }
                         })
                 }
             }
