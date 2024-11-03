@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -68,15 +69,15 @@ fun SearchBarStatic(
 ) {
     Row(
         modifier = modifier
-            .fillMaxWidth()
-            .padding(
-                start = dimensionResource(id = R.dimen.padding_medium_16dp),
-                end = dimensionResource(id = R.dimen.padding_medium_16dp),
-                top = dimensionResource(id = R.dimen.padding_small_4dp),
-                bottom = dimensionResource(id = R.dimen.padding_regular_8dp),
+            .padding(end = dimensionResource(id = R.dimen.padding_small_4dp))
+            .clickable(onClick = onClick)
+            .background(
+                MaterialTheme.colorScheme.surfaceVariant,
+                shape = MaterialTheme.shapes.medium.copy(
+                    bottomEnd = CornerSize(0.dp),
+                    topEnd = CornerSize(0.dp)
+                )
             )
-            .clickable(onClick = onClick) // Navigate to search UI on click
-            .background(MaterialTheme.colorScheme.surfaceVariant, shape = MaterialTheme.shapes.medium)
             .height(40.dp), // Set a height for the search bar
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -85,13 +86,12 @@ fun SearchBarStatic(
             contentDescription = "Search Icon",
             modifier = Modifier.padding(start = 8.dp),
             tint = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
-
         )
         Spacer(modifier = Modifier.width(8.dp)) // Space between icon and text
         Text(
             text = "Search...", // Placeholder text
-            style = TextStyle(fontSize = 16.sp), // Customize text size
-            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f) // Slightly transparent
+            style = TextStyle(fontSize = 16.sp),
+            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
         )
     }
 }

@@ -46,9 +46,7 @@ fun StylesMainScreen(
         ) {
 
             composable(route = AppScreens.Home.name) {
-                HomeScreen(
-                    contentPadding = innerPadding
-                )
+                HomeScreen()
             }
 
             composable(route = AppScreens.Category.name) {

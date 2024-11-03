@@ -2,13 +2,11 @@ package novalogics.android.styles.presentation.ui.home
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -31,10 +29,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -44,6 +47,7 @@ import novalogics.android.styles.data.repository.HomeRepositoryOffline
 import novalogics.android.styles.presentation.common.component.LoadingScreen
 import novalogics.android.styles.presentation.common.component.StyledText
 import novalogics.android.styles.presentation.theme.StylesByNovaTheme
+import novalogics.android.styles.presentation.ui.home.component.CustomDropdown
 import novalogics.android.styles.presentation.ui.home.component.SearchBarStatic
 import novalogics.android.styles.presentation.ui.home.component.TopAppBar
 import novalogics.android.styles.presentation.ui.home.component.ViewPagerDotsIndicator
@@ -54,29 +58,46 @@ import novalogics.android.styles.util.Constants
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel(),
-    contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
-    val scrollState = rememberLazyListState()
     val uiState by viewModel.uiState.collectAsState()
+
+    ScreenUiContent(
+        uiState = uiState
+    )
+}
+
+@Composable
+fun ScreenUiContent(
+    uiState : HomeUiState,
+){
+    val scrollState = rememberLazyListState()
 
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(colorScheme.background)
     ) {
+        Image(
+            painter = painterResource(id = R.drawable.bg_vector_art_screen_bottom),
+            contentDescription = null,
+            modifier = Modifier
+                .alpha(0.1f)
+                .fillMaxWidth()
+                .height(dimensionResource(id = R.dimen.size_3xlarge_242dp))
+                .align(Alignment.BottomCenter),
+            contentScale = ContentScale.FillBounds
+        )
 
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(colorScheme.background)
         ) {
             //Pinned Headers
             TopAppBar(
                 modifier = Modifier
             )
-            SearchBarStatic(
-                onClick = { },
-            )
+
+            HeaderSearchAndDropdown()
 
             LazyColumn(
                 state = scrollState,
@@ -90,10 +111,19 @@ fun HomeScreen(
                 item {
                     StyledText(
                         stringResId = R.string.stay_stylish_for_any_event,
-                        letterSpacing = R.dimen.Latter_space_small_2dp,
+                        letterSpacing = R.dimen.letter_space_small_1dp,
                         style = typography.displayMedium,
+                        fontSize = R.dimen.text_size_large_20sp,
+                        fontWeight = FontWeight.Thin,
+                        textAlign = TextAlign.Start,
                         modifier = Modifier
-                            .padding(dimensionResource(id = R.dimen.padding_medium_16dp))
+                            .fillMaxWidth()
+                            .padding(
+                                top = dimensionResource(id = R.dimen.padding_medium_16dp),
+                                bottom = dimensionResource(id = R.dimen.padding_medium_16dp),
+                                start = dimensionResource(id = R.dimen.padding_large_24dp),
+                                end = dimensionResource(id = R.dimen.padding_medium_16dp)
+                            )
                     )
                 }
                 item {
@@ -107,6 +137,32 @@ fun HomeScreen(
         if (uiState.isLoading) {
             LoadingScreen()
         }
+    }
+}
+
+@Composable
+fun HeaderSearchAndDropdown() {
+
+    val dropdownItems = LocalContext.current.resources.getStringArray(R.array.dropdown_items).toList()
+
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .padding(
+            start = dimensionResource(id = R.dimen.padding_medium_16dp),
+            end = dimensionResource(id = R.dimen.padding_medium_16dp),
+            top = dimensionResource(id = R.dimen.padding_regular_8dp),
+            bottom = dimensionResource(id = R.dimen.padding_regular_8dp),
+        )
+    ) {
+        SearchBarStatic(
+            onClick = { },
+            modifier = Modifier.weight(0.7f)
+        )
+
+        CustomDropdown(
+            items = dropdownItems,
+            modifier = Modifier.weight(0.3f)
+        )
     }
 }
 
@@ -148,8 +204,7 @@ fun EventGridView(
         columns = GridCells.Fixed(2),
         modifier = Modifier
             .fillMaxWidth()
-            .height(dimensionResource(id = R.dimen.size_4xlarge_600dp))
-            .background(colorScheme.background),
+            .height(dimensionResource(id = R.dimen.size_4xlarge_600dp)),
         content = {
             items(events) { event ->
                 EventItem(
@@ -166,19 +221,21 @@ fun EventItem(
 ) {
     Column(
         modifier = Modifier
-            .padding(12.dp)
+            .padding(dimensionResource(id = R.dimen.padding_regular_12dp))
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ElevatedCard(
             modifier = Modifier
                 .fillMaxWidth(0.85f)
-                .border(
-                    BorderStroke(width = 1.dp, color = colorScheme.onSecondaryContainer),
-                    shape = MaterialTheme.shapes.medium
+                .shadow(
+                    elevation = dimensionResource(id = R.dimen.elevation_medium_4dp),
+                    shape = MaterialTheme.shapes.medium,
+                    ambientColor = colorScheme.onBackground,
+                    spotColor = colorScheme.onBackground
                 ),
             elevation = CardDefaults.cardElevation(
-                defaultElevation = 8.dp
+                defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
             ),
             shape = MaterialTheme.shapes.medium
         ) {
@@ -186,7 +243,7 @@ fun EventItem(
                 painter = painterResource(id = event.imageResId),
                 contentDescription = stringResource(id = R.string.event_item_content_description),
                 modifier = Modifier
-                    .height(180.dp)
+                    .height(170.dp)
                     .background(colorScheme.onBackground),
                 contentScale = ContentScale.Crop
             )
@@ -224,31 +281,15 @@ fun EventItem(
 )
 @Composable
 fun HomeScreenPreview(){
+    val uiState = HomeUiState(
+        bannerData = HomeRepositoryOffline().getBannerUrls(),
+        eventData = HomeRepositoryOffline().getDemoEventsWomen(),
+    )
     StylesByNovaTheme {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(colorScheme.background)
-        ) {
-            TopAppBar(
-                modifier = Modifier
-            )
-            SearchBarStatic(
-                onClick = { },
-            )
-            HorizontalPager(
-                bannerUrls = HomeRepositoryOffline().getBannerUrls(),
-            )
-            StyledText(
-                stringResId = R.string.stay_stylish_for_any_event,
-                letterSpacing = R.dimen.Latter_space_small_2dp,
-                style = typography.displayMedium,
-                modifier = Modifier
-                    .padding( dimensionResource(id = R.dimen.padding_medium_16dp))
-            )
-            EventGridView(
-                events = HomeRepositoryOffline().getDemoEventsMen()
-            )
-        }
+
+        ScreenUiContent(
+            uiState = uiState
+        )
+
     }
 }
