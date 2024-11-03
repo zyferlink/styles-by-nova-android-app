@@ -56,13 +56,13 @@ fun ViewPagerUnit(
                             Image(
                                 painter = painterResource(id = R.drawable.img_home_banner_2),
                                 contentDescription = "Loading placeholder",
-                                modifier = Modifier.fillMaxSize(),
+                                modifier = Modifier.fillMaxSize().padding(start = 8.dp, end = 8.dp),
                                 contentScale = ContentScale.FillBounds
                             )
                             Image(
                                 painter = painterResource(id = R.drawable.img_home_banner_1),
                                 contentDescription = "Loading placeholder",
-                                modifier = Modifier.fillMaxSize(),
+                                modifier = Modifier.fillMaxSize().padding(16.dp),
                                 contentScale = ContentScale.Inside
                             )
 
