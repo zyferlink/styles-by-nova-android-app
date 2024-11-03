@@ -38,14 +38,7 @@ fun ViewPagerUnit(
             .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
-        ElevatedCard(
-            modifier = Modifier
-                .padding(dimensionResource(id = R.dimen.padding_medium_16dp)),
-            elevation = CardDefaults.cardElevation(
-                defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
-            ),
-            shape = RoundedCornerShape(dimensionResource(id = R.dimen.corner_radius_medium_8dp))
-        ) {
+
 
             SubcomposeAsyncImage(
                 model = bannerUrls[pageIndex],
@@ -61,10 +54,16 @@ fun ViewPagerUnit(
 
                         Box(modifier = Modifier.fillMaxSize()) {
                             Image(
-                                painter = painterResource(id = R.drawable.banner_women),
+                                painter = painterResource(id = R.drawable.img_home_banner_2),
                                 contentDescription = "Loading placeholder",
                                 modifier = Modifier.fillMaxSize(),
-                                contentScale = ContentScale.Crop
+                                contentScale = ContentScale.FillBounds
+                            )
+                            Image(
+                                painter = painterResource(id = R.drawable.img_home_banner_1),
+                                contentDescription = "Loading placeholder",
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.Inside
                             )
 
                             CircularProgressIndicator(
@@ -91,7 +90,7 @@ fun ViewPagerUnit(
                 }
 
             }
-        }
+
     }
 }
 
