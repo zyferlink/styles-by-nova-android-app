@@ -15,9 +15,18 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val repositoryOffline: HomeRepositoryOffline
 ) : ViewModel() {
+
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState
 
+    private fun reduce(currentState: HomeUiState, intent: HomeIntent): HomeUiState {
+        return when (intent) {
+            is HomeIntent.LoadData -> currentState.copy(isLoading = true)
+            is HomeIntent.UpdateSearchField -> currentState.copy(searchFieldValue = intent.newValue)
+            is HomeIntent.CategoryChangeActions -> currentState.copy(selectedMainCategory = intent.category)
+            is HomeIntent.ClearError -> currentState.copy(error = null)
+        }
+    }
 
     init {
         loadDataOffline()
