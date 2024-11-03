@@ -35,7 +35,6 @@ fun CustomDropdown(
         mutableStateOf(0)
     }
 
-    val usernames = listOf("Alexander", "Isabella", "Benjamin", "Sophia", "Christopher")
 
     Column(
         modifier = modifier,
@@ -51,7 +50,7 @@ fun CustomDropdown(
                     isDropDownExpanded.value = true
                 }
             ) {
-                Text(text = usernames[itemPosition.value])
+                Text(text = items[itemPosition.value])
                 Image(
                     painter = painterResource(id = R.drawable.baseline_arrow_drop_down_24),
                     contentDescription = "DropDown Icon"
@@ -63,9 +62,9 @@ fun CustomDropdown(
                     isDropDownExpanded.value = false
                 }) {
 
-                usernames.forEachIndexed { index, username ->
+                items.forEachIndexed { index, item ->
                     DropdownMenuItem(
-                        text = { Text(text = username)
+                        text = { Text(text = item)
                     },
                         onClick = {
                             isDropDownExpanded.value = false
