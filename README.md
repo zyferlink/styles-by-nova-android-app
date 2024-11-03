@@ -35,7 +35,7 @@
 
 <img src="./_assets/screenshots/alpha_light.png" width="320" height="720" />
 
-<img src="./_assets/screenshots/screen_men_dark.png" width="320" height="720" />
+<img src="./_assets/screenshots/screen_men_light.png" width="320" height="720" />
 <br>
 
 </div>

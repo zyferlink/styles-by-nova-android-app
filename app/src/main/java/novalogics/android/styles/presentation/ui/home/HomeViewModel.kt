@@ -28,12 +28,12 @@ class HomeViewModel @Inject constructor(
             ui.copy(
                 isLoading = true,
                 bannerData = repositoryOffline.getBannerUrls(),
-                eventData = repositoryOffline.getDemoEventsMen()
+                eventData = repositoryOffline.getDemoEventsWomen()
             )
         }
 
         viewModelScope.launch {
-            delay(4000)
+            delay(2000)
             _uiState.update { it.copy(isLoading = false) }
         }
     }
