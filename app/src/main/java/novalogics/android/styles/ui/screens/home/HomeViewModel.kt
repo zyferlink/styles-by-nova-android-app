@@ -1,13 +1,16 @@
 package novalogics.android.styles.ui.screens.home
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import novalogics.android.styles.R
 import novalogics.android.styles.data.repository.HomeRepositoryOffline
 import novalogics.android.styles.data.type.MainCategory
 import novalogics.android.styles.util.Constants.DELAY_2_SECONDS
@@ -15,6 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
+    @ApplicationContext
+    private val context: Context,
     private val repositoryOffline: HomeRepositoryOffline
 ) : ViewModel() {
 
@@ -48,7 +53,10 @@ class HomeViewModel @Inject constructor(
     private fun loadDataOffline() {
         viewModelScope.launch {
             _uiState.update { currentUiState ->
-                currentUiState.copy(isLoading = true)
+                currentUiState.copy(
+                    isLoading = true,
+                    categoryList = context.resources.getStringArray(R.array.dropdown_items).toList()
+                )
             }
 
             handleCategoryChangeActions(MainCategory.WOMEN)

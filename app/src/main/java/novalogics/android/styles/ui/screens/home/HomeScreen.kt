@@ -97,7 +97,9 @@ fun ScreenUiContent(
                 modifier = Modifier
             )
 
-            HeaderSearchAndDropdown()
+            HeaderSearchWithDropdown(
+                dropdownItems = uiState.categoryList
+            )
 
             LazyColumn(
                 state = scrollState,
@@ -141,10 +143,9 @@ fun ScreenUiContent(
 }
 
 @Composable
-fun HeaderSearchAndDropdown() {
-
-    val dropdownItems = LocalContext.current.resources.getStringArray(R.array.dropdown_items).toList()
-
+fun HeaderSearchWithDropdown(
+    dropdownItems: List<String>
+) {
     Row(modifier = Modifier
         .fillMaxWidth()
         .padding(
