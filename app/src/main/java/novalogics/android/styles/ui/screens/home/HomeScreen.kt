@@ -115,29 +115,17 @@ fun ScreenUiContent(
                 item {
                     HorizontalPager(
                         bannerUrls = uiState.bannerItemList,
+                        category = uiState.selectedMainCategory
                     )
                 }
                 item {
-                    StyledText(
-                        stringResId = R.string.stay_stylish_for_any_event,
-                        letterSpacing = R.dimen.letter_space_small_1dp,
-                        style = typography.displayMedium,
-                        fontSize = R.dimen.text_size_large_20sp,
-                        fontWeight = FontWeight.Thin,
-                        textAlign = TextAlign.Start,
+                    SectionDivideTitle(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(
-                                top = dimensionResource(id = R.dimen.padding_medium_16dp),
-                                bottom = dimensionResource(id = R.dimen.padding_medium_16dp),
-                                start = dimensionResource(id = R.dimen.padding_large_24dp),
-                                end = dimensionResource(id = R.dimen.padding_medium_16dp)
-                            )
                     )
                 }
                 item {
                     EventGridView(
-                        events = uiState.eventCategoryList
+                        events = uiState.eventCategoryList,
                     )
                 }
             }
@@ -177,6 +165,7 @@ fun HeaderSearchWithDropdown(
 @Composable
 fun HorizontalPager(
     bannerUrls: List<String>,
+    category: MainCategory
 ) {
     val pageCount = bannerUrls.size
     val pagerState = rememberPagerState(pageCount = { pageCount })
@@ -184,12 +173,11 @@ fun HorizontalPager(
     Box(
         modifier = Modifier
     ) {
-        HorizontalPager(
-            state = pagerState
-        ) { page ->
+        HorizontalPager(state = pagerState) { pageIndex ->
             ViewPagerUnit(
                 bannerUrls = bannerUrls,
-                pageIndex = page
+                pageIndex = pageIndex,
+                category = category
             )
         }
         ViewPagerDotsIndicator(
@@ -201,6 +189,28 @@ fun HorizontalPager(
                 .align(Alignment.BottomCenter)
         )
     }
+}
+
+@Composable
+fun SectionDivideTitle(
+    modifier: Modifier = Modifier
+) {
+    StyledText(
+        stringResId = R.string.stay_stylish_for_any_event,
+        letterSpacing = R.dimen.letter_space_small_1dp,
+        style = typography.displayMedium,
+        fontSize = R.dimen.text_size_large_20sp,
+        fontWeight = FontWeight.Thin,
+        textAlign = TextAlign.Start,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(
+                top = dimensionResource(id = R.dimen.padding_medium_16dp),
+                bottom = dimensionResource(id = R.dimen.padding_medium_16dp),
+                start = dimensionResource(id = R.dimen.padding_large_24dp),
+                end = dimensionResource(id = R.dimen.padding_medium_16dp)
+            )
+    )
 }
 
 
