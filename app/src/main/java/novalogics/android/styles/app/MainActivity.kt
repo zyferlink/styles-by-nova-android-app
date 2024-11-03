@@ -12,8 +12,8 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import novalogics.android.styles.presentation.theme.StylesByNovaTheme
-import novalogics.android.styles.presentation.ui.mainscreen.StylesMainScreen
+import novalogics.android.styles.ui.theme.StylesByNovaTheme
+import novalogics.android.styles.ui.screens.mainscreen.StylesMainScreen
 import novalogics.android.styles.util.Constants
 
 @AndroidEntryPoint

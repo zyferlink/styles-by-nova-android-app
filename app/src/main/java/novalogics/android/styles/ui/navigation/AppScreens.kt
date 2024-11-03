@@ -1,4 +1,4 @@
-package novalogics.android.styles.presentation.navigation
+package novalogics.android.styles.ui.navigation
 
 import androidx.annotation.StringRes
 import novalogics.android.styles.R

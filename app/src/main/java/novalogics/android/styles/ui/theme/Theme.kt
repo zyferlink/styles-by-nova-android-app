@@ -1,4 +1,4 @@
-package novalogics.android.styles.presentation.theme
+package novalogics.android.styles.ui.theme
 
 import android.app.Activity
 import android.os.Build

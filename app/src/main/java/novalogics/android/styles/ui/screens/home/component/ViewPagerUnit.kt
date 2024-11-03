@@ -1,4 +1,4 @@
-package novalogics.android.styles.presentation.ui.home.component
+package novalogics.android.styles.ui.screens.home.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

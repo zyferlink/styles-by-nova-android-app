@@ -1,4 +1,4 @@
-package novalogics.android.styles.presentation.ui.mainscreen.component
+package novalogics.android.styles.ui.screens.mainscreen.component
 
 //noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.BottomNavigation

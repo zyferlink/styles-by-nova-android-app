@@ -1,4 +1,4 @@
-package novalogics.android.styles.presentation.ui.home
+package novalogics.android.styles.ui.screens.home
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
@@ -44,14 +44,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.styles.R
 import novalogics.android.styles.data.model.home.EventEntity
 import novalogics.android.styles.data.repository.HomeRepositoryOffline
-import novalogics.android.styles.presentation.common.component.LoadingScreen
-import novalogics.android.styles.presentation.common.component.StyledText
-import novalogics.android.styles.presentation.theme.StylesByNovaTheme
-import novalogics.android.styles.presentation.ui.home.component.CustomDropdown
-import novalogics.android.styles.presentation.ui.home.component.SearchBarStatic
-import novalogics.android.styles.presentation.ui.home.component.TopAppBar
-import novalogics.android.styles.presentation.ui.home.component.ViewPagerDotsIndicator
-import novalogics.android.styles.presentation.ui.home.component.ViewPagerUnit
+import novalogics.android.styles.ui.common.component.LoadingScreen
+import novalogics.android.styles.ui.common.component.StyledText
+import novalogics.android.styles.ui.theme.StylesByNovaTheme
+import novalogics.android.styles.ui.screens.home.component.CustomDropdown
+import novalogics.android.styles.ui.screens.home.component.SearchBarStatic
+import novalogics.android.styles.ui.screens.home.component.TopAppBar
+import novalogics.android.styles.ui.screens.home.component.ViewPagerDotsIndicator
+import novalogics.android.styles.ui.screens.home.component.ViewPagerUnit
 import novalogics.android.styles.util.Constants
 
 

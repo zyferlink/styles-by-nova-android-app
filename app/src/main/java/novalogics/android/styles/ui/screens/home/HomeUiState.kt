@@ -1,4 +1,4 @@
-package novalogics.android.styles.presentation.ui.home
+package novalogics.android.styles.ui.screens.home
 
 import novalogics.android.styles.data.model.home.EventEntity
 

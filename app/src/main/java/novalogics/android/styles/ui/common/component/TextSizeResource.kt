@@ -1,4 +1,4 @@
-package novalogics.android.styles.presentation.common.component
+package novalogics.android.styles.ui.common.component
 
 import androidx.annotation.DimenRes
 import androidx.compose.runtime.Composable
