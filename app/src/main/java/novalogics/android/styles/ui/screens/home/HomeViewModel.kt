@@ -55,7 +55,7 @@ class HomeViewModel @Inject constructor(
             _uiState.update { currentUiState ->
                 currentUiState.copy(
                     isLoading = true,
-                    categoryList = context.resources.getStringArray(R.array.dropdown_items).toList()
+                    bannerItemList = repositoryOffline.getBannerUrls(),
                 )
             }
 
@@ -75,7 +75,6 @@ class HomeViewModel @Inject constructor(
             MainCategory.WOMEN -> {
                 _uiState.update { currentUiState ->
                     currentUiState.copy(
-                        bannerItemList = repositoryOffline.getBannerUrls(),
                         eventCategoryList = repositoryOffline.getDemoEventsWomen()
                     )
                 }
@@ -83,7 +82,6 @@ class HomeViewModel @Inject constructor(
             MainCategory.MEN -> {
                 _uiState.update { currentUiState ->
                     currentUiState.copy(
-                        bannerItemList = repositoryOffline.getBannerUrls(),
                         eventCategoryList = repositoryOffline.getDemoEventsMen()
                     )
                 }
