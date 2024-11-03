@@ -78,7 +78,7 @@ fun ScreenUiContent(
             .background(colorScheme.background)
     ) {
         Image(
-            painter = painterResource(id = R.drawable.bg_vector_2),
+            painter = painterResource(id = R.drawable.bg_vector_art_screen_bottom),
             contentDescription = null,
             modifier = Modifier
                 .alpha(0.1f)

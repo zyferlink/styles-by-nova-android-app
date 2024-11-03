@@ -7,11 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,9 +16,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImagePainter
-import coil.compose.SubcomposeAsyncImage
-import coil.compose.SubcomposeAsyncImageContent
 import novalogics.android.styles.R
 
 @Composable
@@ -40,13 +32,13 @@ fun ViewPagerUnit(
     ) {
 
         Image(
-            painter = painterResource(id = R.drawable.img_home_banner_2),
+            painter = painterResource(id = R.drawable.img_banner_bg_1),
             contentDescription = "Loading placeholder",
             modifier = Modifier.fillMaxSize().padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
             contentScale = ContentScale.FillBounds
         )
         Image(
-            painter = painterResource(id = R.drawable.img_home_banner_1),
+            painter = painterResource(id = R.drawable.img_banner_women_1),
             contentDescription = "Loading placeholder",
             modifier = Modifier.fillMaxSize().padding(2.dp),
             contentScale = ContentScale.Inside
