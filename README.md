@@ -235,6 +235,18 @@
 [6]:  https://dagger.dev/hilt/
 [7]:  https://docs.gradle.org/current/userguide/kotlin_dsl.html
 
+#
+### ⭓ Versions
+
+- Min SDK : 24
+- Target SDK  : 34
+- Compile SDK : 34
+- Java Version : 17
+- Gradle Version : 8.7
+- Compose Version :1.7.3
+- Kotlin Version : 2.0.20
+- Dagger Hilt Version : 2.52
+- Android Gradle Plugin Version : 8.5.2
 
 #
 ### ⭓ Features
