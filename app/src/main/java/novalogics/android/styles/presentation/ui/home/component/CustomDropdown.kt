@@ -2,12 +2,15 @@ package novalogics.android.styles.presentation.ui.home.component
 
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.MaterialTheme
@@ -18,7 +21,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import novalogics.android.styles.R
 
 @Composable
@@ -36,9 +41,13 @@ fun CustomDropdown(
 
 
     Column(
-        modifier = modifier,
+        modifier = modifier
+            .background(
+                color = MaterialTheme.colorScheme.surfaceVariant,
+                shape = MaterialTheme.shapes.medium.copy(bottomStart = CornerSize(0.dp), topStart = CornerSize(0.dp) )
+            ),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
 
         Box {
@@ -52,7 +61,8 @@ fun CustomDropdown(
                 Text(text = items[itemPosition.value])
                 Image(
                     painter = painterResource(id = R.drawable.ic_down_arrow_1),
-                    contentDescription = "DropDown Icon"
+                    contentDescription = "DropDown Icon",
+                    modifier = Modifier.padding(start = 4.dp)
                 )
             }
             DropdownMenu(
