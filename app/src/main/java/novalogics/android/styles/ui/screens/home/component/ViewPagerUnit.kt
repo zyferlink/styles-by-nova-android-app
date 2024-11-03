@@ -9,7 +9,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -66,44 +69,57 @@ fun ViewPagerUnit(
                 contentScale = ContentScale.Inside
             )
 
-        }
-        else{
-            SubcomposeAsyncImage(
-                model = bannerUrls[pageIndex],
-                contentDescription = "Banner Image",
-                contentScale = ContentScale.FillBounds,
+        } else {
+            ElevatedCard(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .padding(dimensionResource(id = R.dimen.padding_medium_16dp)),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = dimensionResource(id = R.dimen.elevation_medium_4dp)
+                ),
+                shape = RoundedCornerShape(dimensionResource(id = R.dimen.corner_radius_medium_8dp))
             ) {
-                val state = painter.state
 
-                when (state) {
-                    is AsyncImagePainter.State.Loading -> {
+                SubcomposeAsyncImage(
+                    model = bannerUrls[pageIndex],
+                    contentDescription = "Banner Image",
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+                    val state = painter.state
 
-                        Box(modifier = Modifier.fillMaxSize()) {
+                    when (state) {
+                        is AsyncImagePainter.State.Loading -> {
+
+                            Box(modifier = Modifier.fillMaxSize()) {
+                                LoadImage(
+                                    drawableResId = R.drawable.banner_women,
+                                    contentDescription = "Loading placeholder"
+                                )
+                                CircularProgressIndicator(
+                                    modifier = Modifier
+                                        .align(Alignment.Center)
+                                        .size(48.dp)
+                                )
+                            }
+                        }
+
+                        is AsyncImagePainter.State.Error -> { // Show the error image if the loading fails
                             LoadImage(
-                                drawableResId = R.drawable.banner_women,
-                                contentDescription = "Loading placeholder"
-                            )
-                            CircularProgressIndicator(
-                                modifier = Modifier
-                                    .align(Alignment.Center)
-                                    .size(48.dp)
+                                drawableResId = R.drawable.placeholder_banner_error,
+                                contentDescription = "Error placeholder"
                             )
                         }
+
+                        else -> {
+                            SubcomposeAsyncImageContent()
+                        }
                     }
-                    is AsyncImagePainter.State.Error -> { // Show the error image if the loading fails
-                        LoadImage(
-                            drawableResId = R.drawable.placeholder_banner_error,
-                            contentDescription = "Error placeholder"
-                        )
-                    }
-                    else -> { SubcomposeAsyncImageContent() }
+
                 }
-
             }
-
         }
+
 
     }
 }

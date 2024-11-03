@@ -16,9 +16,9 @@ class HomeRepositoryOffline : HomeRepositoryImpl {
 
     override fun getBannerUrls(): List<String> {
         return listOf(
+            "https://i.imghippo.com/files/PaeJm1729158477.png",
             "https://i.imghippo.com/files/F0xn31729159097.jpg",
             "https://i.imghippo.com/files/PaeJm1729158477.png",
-            "https://i.imghippo.com/files/F0xn31729159097.jpg"
         )
     }
 
