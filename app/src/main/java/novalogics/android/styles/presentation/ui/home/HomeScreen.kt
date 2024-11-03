@@ -126,17 +126,25 @@ fun HeaderSearchAndDropdown() {
 
     val dropdownItems = LocalContext.current.resources.getStringArray(R.array.dropdown_items).toList()
 
-    Row(modifier = Modifier.fillMaxWidth()) {
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .padding(
+            start = dimensionResource(id = R.dimen.padding_medium_16dp),
+            end = dimensionResource(id = R.dimen.padding_medium_16dp),
+            top = dimensionResource(id = R.dimen.padding_regular_8dp),
+            bottom = dimensionResource(id = R.dimen.padding_regular_8dp),
+        )
+    ) {
         SearchBarStatic(
             onClick = { },
             modifier = Modifier
-                .weight(0.6f)
+                .weight(0.7f)
         )
 
         CustomDropdown(
             items = dropdownItems,
             modifier = Modifier
-                .weight(0.4f)
+                .weight(0.3f)
                 .height(40.dp),
         )
     }
