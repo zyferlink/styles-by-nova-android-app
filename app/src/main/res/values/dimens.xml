@@ -62,7 +62,7 @@
     <dimen name="size_xlarge_64dp">64dp</dimen>
     <dimen name="size_2xlarge_96dp">96dp</dimen>
     <dimen name="size_3xlarge_128dp">128dp</dimen>
-    <dimen name="size_3xlarge_234dp">234dp</dimen>
+    <dimen name="size_3xlarge_248dp">248dp</dimen>
     <dimen name="size_4xlarge_256dp">256dp</dimen>
     <dimen name="size_4xlarge_600dp">600dp</dimen>
 

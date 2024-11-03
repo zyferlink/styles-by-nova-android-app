@@ -34,62 +34,75 @@ fun ViewPagerUnit(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(dimensionResource(id = R.dimen.size_3xlarge_234dp))
+            .height(dimensionResource(id = R.dimen.size_3xlarge_248dp))
             .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
 
+        Image(
+            painter = painterResource(id = R.drawable.img_home_banner_2),
+            contentDescription = "Loading placeholder",
+            modifier = Modifier.fillMaxSize().padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
+            contentScale = ContentScale.FillWidth
+        )
+        Image(
+            painter = painterResource(id = R.drawable.img_home_banner_1),
+            contentDescription = "Loading placeholder",
+            modifier = Modifier.fillMaxSize().padding(2.dp),
+            contentScale = ContentScale.Inside
+        )
 
-            SubcomposeAsyncImage(
-                model = bannerUrls[pageIndex],
-                contentDescription = "Banner Image",
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier
-                    .fillMaxSize()
-            ) {
-                val state = painter.state
 
-                when (state) {
-                    is AsyncImagePainter.State.Loading -> {
-
-                        Box(modifier = Modifier.fillMaxSize()) {
-                            Image(
-                                painter = painterResource(id = R.drawable.img_home_banner_2),
-                                contentDescription = "Loading placeholder",
-                                modifier = Modifier.fillMaxSize().padding(start = 8.dp, end = 8.dp),
-                                contentScale = ContentScale.FillBounds
-                            )
-                            Image(
-                                painter = painterResource(id = R.drawable.img_home_banner_1),
-                                contentDescription = "Loading placeholder",
-                                modifier = Modifier.fillMaxSize().padding(16.dp),
-                                contentScale = ContentScale.Inside
-                            )
-
-                            CircularProgressIndicator(
-                                modifier = Modifier
-                                    .align(Alignment.Center)
-                                    .size(48.dp)
-                            )
-                        }
-                    }
-
-                    is AsyncImagePainter.State.Error -> {
-                        // Show the error image if the loading fails
-                        Image(
-                            painter = painterResource(id = R.drawable.placeholder_banner_error),
-                            contentDescription = "Error placeholder",
-                            modifier = Modifier.fillMaxSize(),
-                            contentScale = ContentScale.Crop
-                        )
-                    }
-
-                    else -> {
-                        SubcomposeAsyncImageContent()
-                    }
-                }
-
-            }
+//            SubcomposeAsyncImage(
+//                model = bannerUrls[pageIndex],
+//                contentDescription = "Banner Image",
+//                contentScale = ContentScale.FillBounds,
+//                modifier = Modifier
+//                    .fillMaxSize()
+//            ) {
+//                val state = painter.state
+//
+//                when (state) {
+//                    is AsyncImagePainter.State.Loading -> {
+//
+//                        Box(modifier = Modifier.fillMaxSize()) {
+//                            Image(
+//                                painter = painterResource(id = R.drawable.img_home_banner_2),
+//                                contentDescription = "Loading placeholder",
+//                                modifier = Modifier.fillMaxSize().padding(start = 8.dp, end = 8.dp),
+//                                contentScale = ContentScale.FillBounds
+//                            )
+//                            Image(
+//                                painter = painterResource(id = R.drawable.img_home_banner_1),
+//                                contentDescription = "Loading placeholder",
+//                                modifier = Modifier.fillMaxSize().padding(16.dp),
+//                                contentScale = ContentScale.Inside
+//                            )
+//
+//                            CircularProgressIndicator(
+//                                modifier = Modifier
+//                                    .align(Alignment.Center)
+//                                    .size(48.dp)
+//                            )
+//                        }
+//                    }
+//
+//                    is AsyncImagePainter.State.Error -> {
+//                        // Show the error image if the loading fails
+//                        Image(
+//                            painter = painterResource(id = R.drawable.placeholder_banner_error),
+//                            contentDescription = "Error placeholder",
+//                            modifier = Modifier.fillMaxSize(),
+//                            contentScale = ContentScale.Crop
+//                        )
+//                    }
+//
+//                    else -> {
+//                        SubcomposeAsyncImageContent()
+//                    }
+//                }
+//
+//            }
 
     }
 }
