@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import novalogics.android.styles.data.repository.HomeRepositoryOffline
+import novalogics.android.styles.data.type.MainCategory
 import novalogics.android.styles.util.Constants.DELAY_2_SECONDS
 import javax.inject.Inject
 
@@ -35,7 +36,7 @@ class HomeViewModel @Inject constructor(
         // side-effect handling
         when (intent) {
             is HomeIntent.LoadData -> loadDataOffline()
-            is HomeIntent.CategoryChangeActions -> handleCategoryChangeActions()
+            is HomeIntent.CategoryChangeActions -> handleCategoryChangeActions(intent.category)
             else -> {}
         }
     }
@@ -47,12 +48,10 @@ class HomeViewModel @Inject constructor(
     private fun loadDataOffline() {
         viewModelScope.launch {
             _uiState.update { currentUiState ->
-                currentUiState.copy(
-                    isLoading = true,
-                    bannerItemList = repositoryOffline.getBannerUrls(),
-                    eventCategoryList = repositoryOffline.getDemoEventsWomen()
-                )
+                currentUiState.copy(isLoading = true)
             }
+
+            handleCategoryChangeActions(MainCategory.WOMEN)
 
             delay(DELAY_2_SECONDS)
 
@@ -63,13 +62,28 @@ class HomeViewModel @Inject constructor(
     }
 
 
-    private fun handleCategoryChangeActions(){
-
+    private fun handleCategoryChangeActions(category: MainCategory){
+        when (category) {
+            MainCategory.WOMEN -> {
+                _uiState.update { currentUiState ->
+                    currentUiState.copy(
+                        bannerItemList = repositoryOffline.getBannerUrls(),
+                        eventCategoryList = repositoryOffline.getDemoEventsWomen()
+                    )
+                }
+            }
+            MainCategory.MEN -> {
+                _uiState.update { currentUiState ->
+                    currentUiState.copy(
+                        bannerItemList = repositoryOffline.getBannerUrls(),
+                        eventCategoryList = repositoryOffline.getDemoEventsMen()
+                    )
+                }
+            }
+            MainCategory.KIDS -> {}
+            else -> {}
+        }
     }
-
-
-
-
 
 
     fun handleError() {
