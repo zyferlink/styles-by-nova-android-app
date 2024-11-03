@@ -200,6 +200,19 @@
 #
 ## ᴠ ⁃ ʙᴇʜɪɴᴅ ᴛʜᴇ ᴄᴏᴅᴇ: ᴅᴇᴠ ꜰᴇᴀᴛᴜʀᴇꜱ
 
+
+### ⭓ Project Documents
+
+<br>
+
+1. **Managing Dependencies with Version Catalogs** &nbsp;| &nbsp;  [ Read -> ](./_assets/docs/doc-version-catalogs.md)
+
+2. **Jetpack Compose Project Structure Guide** &nbsp;|&nbsp;  [ Read -> ](./_assets/docs/doc-project-structure.md)
+
+3. **Dimension Standards in Android** &nbsp;|&nbsp;  [ Read -> ](./_assets/docs/doc-dimension-resource.md)
+
+
+#
 ### ⭓ App Dependencies/Libraries Overview
 
 <br>
@@ -222,6 +235,18 @@
 [6]:  https://dagger.dev/hilt/
 [7]:  https://docs.gradle.org/current/userguide/kotlin_dsl.html
 
+#
+### ⭓ Versions
+
+- Min SDK : 24
+- Target SDK  : 34
+- Compile SDK : 34
+- Java Version : 17
+- Gradle Version : 8.7
+- Compose Version :1.7.3
+- Kotlin Version : 2.0.20
+- Dagger Hilt Version : 2.52
+- Android Gradle Plugin Version : 8.5.2
 
 #
 ### ⭓ Features
@@ -230,24 +255,13 @@
 2. Project Resources &nbsp;|&nbsp;  [ More-> ](#2-project-resources)
 
 
-#
-### ⭓ Project Documents
-<br>
 
-1. **Managing Dependencies with Version Catalogs** &nbsp;| &nbsp;  [ Read -> ](./_assets/docs/doc-version-catalogs.md)
-  
-2. **Jetpack Compose Project Structure Guide** &nbsp;|&nbsp;  [ Read -> ](./_assets/docs/doc-project-structure.md)
-
-3. **Dimension Standards in Android** &nbsp;|&nbsp;  [ Read -> ](./_assets/docs/doc-dimension-resource.md)
 
 #
 <div align="center">
 
 <kbd>[&nbsp; ⮝ &nbsp;  BACK TO TOP  &nbsp;&nbsp;&nbsp;](#ɪ----ᴘʀᴏᴊᴇᴄᴛ-ɪɴꜰᴏ) </kbd>
 </div>
-
-
-
 
 
 
@@ -264,15 +278,12 @@ ____
 1. Add Top Libraries and Plugins to the Project &nbsp;| &nbsp; [ More Info -> ](./_assets/docs/doc-version-catalogs.md#13-top-libraries-and-plugins-for-project-development)
 2. Add App icon using Resource Manager > Image Asset
 3. Update Project Structure According to &nbsp;&nbsp;  [ Project Structure Document -> ](./_assets/docs/doc-project-structure.md)
-4. Add fonts, colors, shapes, dimes
-5. Update project Theme
-6. Add necessary Strings/Texts
-7. Add necessary icons
-8. Add necessary images, placeholders
-9. Add Dagger hilt
-10. Add Common UI components
-11. Add Main screen
-12. Add Home screen
+4. Add fonts, colors, shapes, dimes, theme
+5. Add necessary Strings/Texts, icons, images, placeholders
+6. Add Dagger hilt
+7. Add Common UI components
+8. Add Main & Home screens
+
 
 
 <br>

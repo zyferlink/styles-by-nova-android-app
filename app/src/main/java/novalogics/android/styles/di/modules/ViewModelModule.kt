@@ -7,7 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dagger.multibindings.IntoMap
 import novalogics.android.styles.di.components.ViewModelKey
-import novalogics.android.styles.presentation.ui.home.HomeViewModel
+import novalogics.android.styles.ui.screens.home.HomeViewModel
 
 @Module
 @InstallIn(SingletonComponent::class)

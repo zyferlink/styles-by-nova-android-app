@@ -59,7 +59,7 @@
     <dimen name="size_xsmall_16dp">16dp</dimen>
     <dimen name="size_small_24dp">24dp</dimen>
     <dimen name="size_medium_32dp">32dp</dimen>
-    <dimen name="size_medium_36dp">36dp</dimen>
+    <dimen name="size_medium_40dp">40dp</dimen>
     <dimen name="size_large_48dp">48dp</dimen>
     <dimen name="size_xlarge_64dp">64dp</dimen>
     <dimen name="size_2xlarge_96dp">96dp</dimen>

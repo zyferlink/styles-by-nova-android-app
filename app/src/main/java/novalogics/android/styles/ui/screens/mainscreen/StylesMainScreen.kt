@@ -1,4 +1,4 @@
-package novalogics.android.styles.presentation.ui.mainscreen
+package novalogics.android.styles.ui.screens.mainscreen
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -14,9 +14,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import novalogics.android.styles.R
-import novalogics.android.styles.presentation.navigation.AppScreens
-import novalogics.android.styles.presentation.ui.home.HomeScreen
-import novalogics.android.styles.presentation.ui.mainscreen.component.BottomNavigationBar
+import novalogics.android.styles.ui.navigation.AppScreens
+import novalogics.android.styles.ui.screens.home.HomeScreen
+import novalogics.android.styles.ui.screens.mainscreen.component.BottomNavigationBar
 
 
 @Composable

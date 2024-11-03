@@ -1,4 +1,4 @@
-package novalogics.android.styles.presentation.common.component
+package novalogics.android.styles.ui.common.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -23,7 +23,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import novalogics.android.styles.R
-import novalogics.android.styles.presentation.theme.StylesByNovaTheme
+import novalogics.android.styles.ui.theme.StylesByNovaTheme
 
 
 @Composable

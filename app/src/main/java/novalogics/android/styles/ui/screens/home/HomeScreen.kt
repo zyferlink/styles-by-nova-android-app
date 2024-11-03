@@ -1,4 +1,4 @@
-package novalogics.android.styles.presentation.ui.home
+package novalogics.android.styles.ui.screens.home
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
@@ -32,7 +32,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -44,14 +43,15 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.styles.R
 import novalogics.android.styles.data.model.home.EventEntity
 import novalogics.android.styles.data.repository.HomeRepositoryOffline
-import novalogics.android.styles.presentation.common.component.LoadingScreen
-import novalogics.android.styles.presentation.common.component.StyledText
-import novalogics.android.styles.presentation.theme.StylesByNovaTheme
-import novalogics.android.styles.presentation.ui.home.component.CustomDropdown
-import novalogics.android.styles.presentation.ui.home.component.SearchBarStatic
-import novalogics.android.styles.presentation.ui.home.component.TopAppBar
-import novalogics.android.styles.presentation.ui.home.component.ViewPagerDotsIndicator
-import novalogics.android.styles.presentation.ui.home.component.ViewPagerUnit
+import novalogics.android.styles.data.type.MainCategory
+import novalogics.android.styles.ui.common.component.LoadingScreen
+import novalogics.android.styles.ui.common.component.StyledText
+import novalogics.android.styles.ui.theme.StylesByNovaTheme
+import novalogics.android.styles.ui.screens.home.component.CustomDropdown
+import novalogics.android.styles.ui.screens.home.component.SearchBarStatic
+import novalogics.android.styles.ui.screens.home.component.TopAppBar
+import novalogics.android.styles.ui.screens.home.component.ViewPagerDotsIndicator
+import novalogics.android.styles.ui.screens.home.component.ViewPagerUnit
 import novalogics.android.styles.util.Constants
 
 
@@ -62,13 +62,19 @@ fun HomeScreen(
     val uiState by viewModel.uiState.collectAsState()
 
     ScreenUiContent(
-        uiState = uiState
+        uiState = uiState,
+        onDropdownSelectionChange = { category->
+            viewModel.handleIntent(
+                HomeIntent.CategoryChangeActions(category)
+            )
+        }
     )
 }
 
 @Composable
 fun ScreenUiContent(
     uiState : HomeUiState,
+    onDropdownSelectionChange: (MainCategory) -> Unit
 ){
     val scrollState = rememberLazyListState()
 
@@ -97,7 +103,9 @@ fun ScreenUiContent(
                 modifier = Modifier
             )
 
-            HeaderSearchAndDropdown()
+            HeaderSearchWithDropdown(
+                onDropdownSelectionChange = onDropdownSelectionChange
+            )
 
             LazyColumn(
                 state = scrollState,
@@ -105,30 +113,18 @@ fun ScreenUiContent(
             ) {
                 item {
                     HorizontalPager(
-                        bannerUrls = uiState.bannerData,
+                        bannerUrls = uiState.bannerItemList,
+                        category = uiState.selectedMainCategory
                     )
                 }
                 item {
-                    StyledText(
-                        stringResId = R.string.stay_stylish_for_any_event,
-                        letterSpacing = R.dimen.letter_space_small_1dp,
-                        style = typography.displayMedium,
-                        fontSize = R.dimen.text_size_large_20sp,
-                        fontWeight = FontWeight.Thin,
-                        textAlign = TextAlign.Start,
+                    SectionDivideTitle(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(
-                                top = dimensionResource(id = R.dimen.padding_medium_16dp),
-                                bottom = dimensionResource(id = R.dimen.padding_medium_16dp),
-                                start = dimensionResource(id = R.dimen.padding_large_24dp),
-                                end = dimensionResource(id = R.dimen.padding_medium_16dp)
-                            )
                     )
                 }
                 item {
                     EventGridView(
-                        events = uiState.eventData
+                        events = uiState.eventCategoryList,
                     )
                 }
             }
@@ -141,10 +137,9 @@ fun ScreenUiContent(
 }
 
 @Composable
-fun HeaderSearchAndDropdown() {
-
-    val dropdownItems = LocalContext.current.resources.getStringArray(R.array.dropdown_items).toList()
-
+fun HeaderSearchWithDropdown(
+    onDropdownSelectionChange: (MainCategory) -> Unit,
+) {
     Row(modifier = Modifier
         .fillMaxWidth()
         .padding(
@@ -160,7 +155,7 @@ fun HeaderSearchAndDropdown() {
         )
 
         CustomDropdown(
-            items = dropdownItems,
+            onSelectionChange = onDropdownSelectionChange,
             modifier = Modifier.weight(0.3f)
         )
     }
@@ -169,6 +164,7 @@ fun HeaderSearchAndDropdown() {
 @Composable
 fun HorizontalPager(
     bannerUrls: List<String>,
+    category: MainCategory
 ) {
     val pageCount = bannerUrls.size
     val pagerState = rememberPagerState(pageCount = { pageCount })
@@ -176,12 +172,11 @@ fun HorizontalPager(
     Box(
         modifier = Modifier
     ) {
-        HorizontalPager(
-            state = pagerState
-        ) { page ->
+        HorizontalPager(state = pagerState) { pageIndex ->
             ViewPagerUnit(
                 bannerUrls = bannerUrls,
-                pageIndex = page
+                pageIndex = pageIndex,
+                category = category
             )
         }
         ViewPagerDotsIndicator(
@@ -193,6 +188,28 @@ fun HorizontalPager(
                 .align(Alignment.BottomCenter)
         )
     }
+}
+
+@Composable
+fun SectionDivideTitle(
+    modifier: Modifier = Modifier
+) {
+    StyledText(
+        stringResId = R.string.stay_stylish_for_any_event,
+        letterSpacing = R.dimen.letter_space_small_1dp,
+        style = typography.displayMedium,
+        fontSize = R.dimen.text_size_large_20sp,
+        fontWeight = FontWeight.Thin,
+        textAlign = TextAlign.Start,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(
+                top = dimensionResource(id = R.dimen.padding_medium_16dp),
+                bottom = dimensionResource(id = R.dimen.padding_medium_16dp),
+                start = dimensionResource(id = R.dimen.padding_large_24dp),
+                end = dimensionResource(id = R.dimen.padding_medium_16dp)
+            )
+    )
 }
 
 
@@ -282,13 +299,14 @@ fun EventItem(
 @Composable
 fun HomeScreenPreview(){
     val uiState = HomeUiState(
-        bannerData = HomeRepositoryOffline().getBannerUrls(),
-        eventData = HomeRepositoryOffline().getDemoEventsWomen(),
+        bannerItemList = HomeRepositoryOffline().getBannerUrls(),
+        eventCategoryList = HomeRepositoryOffline().getDemoEventsWomen(),
     )
     StylesByNovaTheme {
 
         ScreenUiContent(
-            uiState = uiState
+            uiState = uiState,
+            onDropdownSelectionChange = {}
         )
 
     }
