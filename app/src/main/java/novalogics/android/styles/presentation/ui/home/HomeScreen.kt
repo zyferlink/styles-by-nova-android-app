@@ -112,8 +112,9 @@ fun ScreenUiContent(
                 item {
                     StyledText(
                         stringResId = R.string.stay_stylish_for_any_event,
-                        letterSpacing = R.dimen.Latter_space_small_2dp,
+                        letterSpacing = R.dimen.letter_space_small_2dp,
                         style = typography.displayMedium,
+
                         modifier = Modifier
                             .padding(dimensionResource(id = R.dimen.padding_medium_16dp))
                     )

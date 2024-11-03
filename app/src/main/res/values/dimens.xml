@@ -16,8 +16,8 @@
     <dimen name="space_large_24dp">24dp</dimen>
     <dimen name="space_xlarge_32dp">32dp</dimen>
 
-    <dimen name="Latter_space_small_1dp">1sp</dimen>
-    <dimen name="Latter_space_small_2dp">2sp</dimen>
+    <dimen name="letter_space_small_1dp">1sp</dimen>
+    <dimen name="letter_space_small_2dp">2sp</dimen>
 
     <!-- Text Sizes -->
     <dimen name="text_size_xsmall_10sp">10sp</dimen>
