@@ -28,6 +28,25 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun handleIntent(intent: HomeIntent) {
+        _uiState.value = reduce(_uiState.value, intent)
+
+        // side-effect handling
+        when (intent) {
+            is HomeIntent.LoadData -> loadData()
+            is HomeIntent.CategoryChangeActions -> handleCategoryChangeActions()
+            else -> {}
+        }
+    }
+
+    private fun loadData(){
+
+    }
+
+    private fun handleCategoryChangeActions(){
+
+    }
+
     init {
         loadDataOffline()
     }
