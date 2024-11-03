@@ -105,7 +105,7 @@ fun ScreenUiContent(
             ) {
                 item {
                     HorizontalPager(
-                        bannerUrls = uiState.bannerData,
+                        bannerUrls = uiState.bannerItemList,
                     )
                 }
                 item {
@@ -128,7 +128,7 @@ fun ScreenUiContent(
                 }
                 item {
                     EventGridView(
-                        events = uiState.eventData
+                        events = uiState.eventCategoryList
                     )
                 }
             }
@@ -282,8 +282,8 @@ fun EventItem(
 @Composable
 fun HomeScreenPreview(){
     val uiState = HomeUiState(
-        bannerData = HomeRepositoryOffline().getBannerUrls(),
-        eventData = HomeRepositoryOffline().getDemoEventsWomen(),
+        bannerItemList = HomeRepositoryOffline().getBannerUrls(),
+        eventCategoryList = HomeRepositoryOffline().getDemoEventsWomen(),
     )
     StylesByNovaTheme {
 
