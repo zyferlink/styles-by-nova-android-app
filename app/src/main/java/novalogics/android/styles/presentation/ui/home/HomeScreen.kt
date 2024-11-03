@@ -138,7 +138,6 @@ fun HeaderSearchAndDropdown() {
             modifier = Modifier
                 .weight(0.4f)
                 .height(40.dp),
-            shape = MaterialTheme.shapes.medium
         )
     }
 }

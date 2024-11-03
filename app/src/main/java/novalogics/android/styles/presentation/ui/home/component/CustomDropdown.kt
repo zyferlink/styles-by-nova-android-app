@@ -24,8 +24,7 @@ import novalogics.android.styles.R
 @Composable
 fun CustomDropdown(
     items: List<String>,
-    modifier: Modifier = Modifier,
-    shape: Shape = MaterialTheme.shapes.medium
+    modifier: Modifier = Modifier
 ) {
     val isDropDownExpanded = remember {
         mutableStateOf(false)
@@ -52,7 +51,7 @@ fun CustomDropdown(
             ) {
                 Text(text = items[itemPosition.value])
                 Image(
-                    painter = painterResource(id = R.drawable.baseline_arrow_drop_down_24),
+                    painter = painterResource(id = R.drawable.ic_down_arrow_1),
                     contentDescription = "DropDown Icon"
                 )
             }
