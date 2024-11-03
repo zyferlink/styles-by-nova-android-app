@@ -4,6 +4,7 @@
     <dimen name="padding_xsmall_2dp">2dp</dimen>
     <dimen name="padding_small_4dp">4dp</dimen>
     <dimen name="padding_regular_8dp">8dp</dimen>
+    <dimen name="padding_regular_12dp">12dp</dimen>
     <dimen name="padding_medium_16dp">16dp</dimen>
     <dimen name="padding_large_24dp">24dp</dimen>
     <dimen name="padding_xlarge_32dp">32dp</dimen>
@@ -16,8 +17,8 @@
     <dimen name="space_large_24dp">24dp</dimen>
     <dimen name="space_xlarge_32dp">32dp</dimen>
 
-    <dimen name="Latter_space_small_1dp">1sp</dimen>
-    <dimen name="Latter_space_small_2dp">2sp</dimen>
+    <dimen name="letter_space_small_1dp">1sp</dimen>
+    <dimen name="letter_space_small_2dp">2sp</dimen>
 
     <!-- Text Sizes -->
     <dimen name="text_size_xsmall_10sp">10sp</dimen>
@@ -58,11 +59,12 @@
     <dimen name="size_xsmall_16dp">16dp</dimen>
     <dimen name="size_small_24dp">24dp</dimen>
     <dimen name="size_medium_32dp">32dp</dimen>
+    <dimen name="size_medium_36dp">36dp</dimen>
     <dimen name="size_large_48dp">48dp</dimen>
     <dimen name="size_xlarge_64dp">64dp</dimen>
     <dimen name="size_2xlarge_96dp">96dp</dimen>
     <dimen name="size_3xlarge_128dp">128dp</dimen>
-    <dimen name="size_3xlarge_234dp">234dp</dimen>
+    <dimen name="size_3xlarge_242dp">242dp</dimen>
     <dimen name="size_4xlarge_256dp">256dp</dimen>
     <dimen name="size_4xlarge_600dp">600dp</dimen>
 
