@@ -182,11 +182,7 @@ fun EventItem(
     ) {
         ElevatedCard(
             modifier = Modifier
-                .fillMaxWidth(0.85f)
-                .border(
-                    BorderStroke(width = 1.dp, color = colorScheme.onSecondaryContainer),
-                    shape = MaterialTheme.shapes.medium
-                ),
+                .fillMaxWidth(0.8f),
             elevation = CardDefaults.cardElevation(
                 defaultElevation = 8.dp
             ),
@@ -236,7 +232,7 @@ fun EventItem(
 fun HomeScreenPreview(){
     val uiState = HomeUiState(
         bannerData = HomeRepositoryOffline().getBannerUrls(),
-        eventData = HomeRepositoryOffline().getDemoEventsMen(),
+        eventData = HomeRepositoryOffline().getDemoEventsWomen(),
     )
 
     StylesByNovaTheme {
