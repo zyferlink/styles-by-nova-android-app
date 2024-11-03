@@ -22,6 +22,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
@@ -33,11 +34,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -112,10 +117,12 @@ fun ScreenUiContent(
                 item {
                     StyledText(
                         stringResId = R.string.stay_stylish_for_any_event,
-                        letterSpacing = R.dimen.letter_space_small_2dp,
+                        letterSpacing = R.dimen.letter_space_small_1dp,
                         style = typography.displayMedium,
-
+                        fontWeight = FontWeight.Thin,
+                        textAlign = TextAlign.Start,
                         modifier = Modifier
+                            .fillMaxWidth()
                             .padding(dimensionResource(id = R.dimen.padding_medium_16dp))
                     )
                 }
@@ -223,9 +230,15 @@ fun EventItem(
     ) {
         ElevatedCard(
             modifier = Modifier
-                .fillMaxWidth(0.8f),
+                .fillMaxWidth(0.8f)
+                .shadow(
+                    elevation = 8.dp, // Custom elevation level
+                    shape = MaterialTheme.shapes.medium, // Custom shape
+                    ambientColor = Color.Black, // Ambient shadow color
+                    spotColor = Color.Black// Spot shadow color with transparency
+                ),
             elevation = CardDefaults.cardElevation(
-                defaultElevation = 8.dp
+                defaultElevation = 12.dp
             ),
             shape = MaterialTheme.shapes.medium
         ) {
