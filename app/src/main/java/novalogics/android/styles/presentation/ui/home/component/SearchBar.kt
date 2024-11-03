@@ -69,15 +69,15 @@ fun SearchBarStatic(
 ) {
     Row(
         modifier = modifier
-            .padding(
-                start = dimensionResource(id = R.dimen.padding_medium_16dp),
-                end = dimensionResource(id = R.dimen.padding_medium_16dp),
-                top = dimensionResource(id = R.dimen.padding_small_4dp),
-                bottom = dimensionResource(id = R.dimen.padding_regular_8dp),
-            )
+            .padding(end = dimensionResource(id = R.dimen.padding_small_4dp))
             .clickable(onClick = onClick)
-            .background(MaterialTheme.colorScheme.surfaceVariant,
-                shape = MaterialTheme.shapes.medium.copy(bottomEnd = CornerSize(0.dp), topEnd = CornerSize(0.dp) ))
+            .background(
+                MaterialTheme.colorScheme.surfaceVariant,
+                shape = MaterialTheme.shapes.medium.copy(
+                    bottomEnd = CornerSize(0.dp),
+                    topEnd = CornerSize(0.dp)
+                )
+            )
             .height(40.dp), // Set a height for the search bar
         verticalAlignment = Alignment.CenterVertically
     ) {
