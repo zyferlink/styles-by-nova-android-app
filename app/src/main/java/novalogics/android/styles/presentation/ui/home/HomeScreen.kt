@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -31,6 +32,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -77,11 +79,20 @@ fun ScreenUiContent(
             .fillMaxSize()
             .background(colorScheme.background)
     ) {
+        Image(
+            painter = painterResource(id = R.drawable.bg_vector_2),
+            contentDescription = null,
+            modifier = Modifier
+                .alpha(0.1f)
+                .fillMaxWidth()
+                .height(240.dp)
+                .align(Alignment.BottomEnd),
+            contentScale = ContentScale.FillBounds
+        )
 
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(colorScheme.background)
         ) {
             //Pinned Headers
             TopAppBar(
@@ -188,8 +199,7 @@ fun EventGridView(
         columns = GridCells.Fixed(2),
         modifier = Modifier
             .fillMaxWidth()
-            .height(dimensionResource(id = R.dimen.size_4xlarge_600dp))
-            .background(colorScheme.background),
+            .height(dimensionResource(id = R.dimen.size_4xlarge_600dp)),
         content = {
             items(events) { event ->
                 EventItem(
