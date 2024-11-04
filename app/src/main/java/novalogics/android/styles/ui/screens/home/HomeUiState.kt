@@ -5,6 +5,7 @@ import novalogics.android.styles.data.type.FashionCategory
 
 data class HomeUiState(
     val isLoading: Boolean = false,
+    val loadingMessage: String = "",
     val bannerItems: List<String> = emptyList(),
     val eventCategories: List<EventEntity> = emptyList(),
     val fashionCategory: FashionCategory = FashionCategory.DEFAULT,

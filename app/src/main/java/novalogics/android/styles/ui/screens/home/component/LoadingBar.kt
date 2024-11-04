@@ -7,7 +7,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -53,7 +52,7 @@ fun LoadingBar(
         ),
         exit = slideOutVertically(
             targetOffsetY = { it },
-            animationSpec = tween(durationMillis = 1500)
+            animationSpec = tween(durationMillis = 4000)
         )
     ) {
 
@@ -107,7 +106,7 @@ fun LoadingBar(
                         )
                         Text(
                             text = message,
-                            color = MaterialTheme.colorScheme.background,
+                            color = colorScheme.background,
                             style = MaterialTheme.typography.bodyLarge,
                             letterSpacing = textSizeResource(id = R.dimen.letter_space_small_1dp),
                             fontSize = textSizeResource(id = R.dimen.text_size_large_18sp),

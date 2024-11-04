@@ -135,6 +135,7 @@ fun ScreenUiContent(
 
         LoadingBar(
             isLoading = uiState.isLoading,
+            message = uiState.loadingMessage
         )
 
     }

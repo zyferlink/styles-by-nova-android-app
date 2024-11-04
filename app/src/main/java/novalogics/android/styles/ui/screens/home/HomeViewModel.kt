@@ -59,6 +59,7 @@ class HomeViewModel @Inject constructor(
             _uiState.update { currentUiState ->
                 currentUiState.copy(
                     isLoading = true,
+                    loadingMessage = "Loading...",
                     bannerItems = localDataRepository.getBannerUrls(),
                 )
             }
@@ -67,10 +68,13 @@ class HomeViewModel @Inject constructor(
                 HomeIntent.ChangeFashionCategory(getFashionCategory())
             )
 
-            delay(DELAY_4_SECONDS)
+            delay(DELAY_2_SECONDS)
 
             _uiState.update { currentUiState ->
-                currentUiState.copy(isLoading = false)
+                currentUiState.copy(
+                    isLoading = false,
+                    loadingMessage = "Successful... ✨",
+                )
             }
         }
     }
