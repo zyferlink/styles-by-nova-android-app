@@ -32,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -42,7 +43,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.styles.R
 import novalogics.android.styles.data.model.home.Event
+import novalogics.android.styles.data.model.home.EventEntity
 import novalogics.android.styles.data.repository.local.LocalDataRepositoryImpl
+import novalogics.android.styles.data.repository.local.StaticRepository
 import novalogics.android.styles.data.type.FashionCategory
 import novalogics.android.styles.ui.common.component.LoadingScreen
 import novalogics.android.styles.ui.common.component.StyledText
@@ -218,7 +221,7 @@ fun SectionDivideTitle(
 
 @Composable
 fun EventGridView(
-    events: List<Event>
+    events: List<EventEntity>
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -237,7 +240,7 @@ fun EventGridView(
 
 @Composable
 fun EventItem(
-    event: Event
+    event: EventEntity
 ) {
     Column(
         modifier = Modifier
@@ -271,7 +274,7 @@ fun EventItem(
 
         StyledText(
             modifier = Modifier.padding(top = dimensionResource(id = R.dimen.padding_regular_8dp)),
-            stringResId = event.nameResId,
+            stringValue = event.name,
             fontSize = R.dimen.text_size_small_12sp,
             style = typography.displayMedium,
             isUppercase = true
@@ -279,7 +282,7 @@ fun EventItem(
 
         StyledText(
             modifier = Modifier.offset(y = 2.dp),
-            stringResId = event.categoryResId,
+            stringValue = event.eventCategory,
             fontSize = R.dimen.text_size_xsmall_10sp,
             color = colorScheme.onSecondaryContainer,
             style = typography.labelSmall,
@@ -301,9 +304,11 @@ fun EventItem(
 )
 @Composable
 fun HomeScreenPreview(){
+    val context = LocalContext.current
+
     val uiState = HomeUiState(
-        bannerItemList = LocalDataRepositoryImpl().getBannerUrls(),
-        eventCategoryList = LocalDataRepositoryImpl().getDemoEventsWomen(),
+        bannerItemList = StaticRepository.getBannerUrls(),
+        eventCategoryList = StaticRepository.getWomenEvents(context = context),
     )
     StylesByNovaTheme {
 

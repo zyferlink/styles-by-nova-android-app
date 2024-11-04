@@ -23,7 +23,9 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideRepository(): LocalDataRepository {
-        return LocalDataRepositoryImpl()
+    fun provideRepository(
+        @ApplicationContext context: Context
+    ): LocalDataRepository {
+        return LocalDataRepositoryImpl(context)
     }
 }
