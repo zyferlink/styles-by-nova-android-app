@@ -133,12 +133,10 @@ fun ScreenUiContent(
             }
         }
 
+        LoadingBar(
+            isLoading = uiState.isLoading,
+        )
 
-        if (uiState.isLoading) {
-            LoadingBar(
-                isLoading = true,
-            )
-        }
     }
 }
 

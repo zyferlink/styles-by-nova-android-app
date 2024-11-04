@@ -34,6 +34,7 @@ import coil.compose.SubcomposeAsyncImageContent
 import kotlinx.coroutines.delay
 import novalogics.android.styles.R
 import novalogics.android.styles.data.type.FashionCategory
+import novalogics.android.styles.util.Constants.DELAY_4_SECONDS
 
 @Composable
 fun ViewPagerUnit(
@@ -66,7 +67,7 @@ fun ViewPagerUnit(
 
             // Update the index every 10 seconds
             LaunchedEffect(key1 = index) {
-                delay(4000L) // 10 seconds delay
+                delay(DELAY_4_SECONDS) // 10 seconds delay
                 index = (index + 1) % backgroundResIds.size // Cycle through images
             }
 

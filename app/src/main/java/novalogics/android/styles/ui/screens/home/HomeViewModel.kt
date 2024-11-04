@@ -15,6 +15,7 @@ import novalogics.android.styles.data.repository.local.LocalDataRepository
 import novalogics.android.styles.data.type.FashionCategory
 import novalogics.android.styles.util.Constants.DELAY_1_SECOND
 import novalogics.android.styles.util.Constants.DELAY_2_SECONDS
+import novalogics.android.styles.util.Constants.DELAY_4_SECONDS
 import javax.inject.Inject
 
 @HiltViewModel
@@ -66,7 +67,7 @@ class HomeViewModel @Inject constructor(
                 HomeIntent.ChangeFashionCategory(getFashionCategory())
             )
 
-            delay(DELAY_2_SECONDS)
+            delay(DELAY_4_SECONDS)
 
             _uiState.update { currentUiState ->
                 currentUiState.copy(isLoading = false)
