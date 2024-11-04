@@ -56,7 +56,7 @@
 ##
 ### ⭓ Requirements
 - Android 7.0 and Above
-- Min SDK version 24
+  - Min SDK version 24 (Android 7.0)
 
 
 ##
@@ -313,6 +313,8 @@ ____
 
 <details>
  <summary> View Project Resources Details </summary>
+
+<br>
 
 *Import : **Fonts** from*
 ```yaml
