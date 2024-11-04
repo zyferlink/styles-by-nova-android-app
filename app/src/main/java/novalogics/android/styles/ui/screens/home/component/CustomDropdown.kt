@@ -26,18 +26,21 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import novalogics.android.styles.R
-import novalogics.android.styles.data.type.MainCategory
+import novalogics.android.styles.data.type.FashionCategory
 
 @Composable
 fun CustomDropdown(
-    onSelectionChange: (MainCategory) -> Unit,
+    onSelectionChange: (FashionCategory) -> Unit,
+    selectedCategory: FashionCategory,
     modifier: Modifier = Modifier
 ) {
-    val isDropDownExpanded = remember { mutableStateOf(false) }
-    val itemPosition = remember { mutableIntStateOf(0) }
 
-    val categories = MainCategory.entries
-        .filter { it != MainCategory.NONE }
+    val index = if(selectedCategory == FashionCategory.DEFAULT) 0 else selectedCategory.ordinal
+    val isDropDownExpanded = remember { mutableStateOf(false) }
+    val itemPosition = remember { mutableIntStateOf(index) }
+
+    val categories = FashionCategory.entries
+        .filter { it != FashionCategory.DEFAULT }
         .map { it.name }
 
     Column(
@@ -90,7 +93,7 @@ fun CustomDropdown(
                         onClick = {
                             isDropDownExpanded.value = false
                             itemPosition.intValue = index
-                            MainCategory.entries.getOrNull(index)?.let {
+                            FashionCategory.entries.getOrNull(index)?.let {
                                 category-> onSelectionChange(category)
                             }
                         })

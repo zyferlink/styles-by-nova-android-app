@@ -100,6 +100,8 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     //Accompanist Pager Indicators
     implementation(libs.accompanist.pager.indicators)
+    //DataStore
+    implementation(libs.datastore.preferences)
 
     //Unit Test
     testImplementation(libs.junit)

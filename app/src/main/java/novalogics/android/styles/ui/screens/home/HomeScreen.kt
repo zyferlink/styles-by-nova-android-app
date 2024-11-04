@@ -32,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -42,12 +43,13 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.styles.R
 import novalogics.android.styles.data.model.home.EventEntity
-import novalogics.android.styles.data.repository.HomeRepositoryOffline
-import novalogics.android.styles.data.type.MainCategory
+import novalogics.android.styles.data.repository.local.StaticRepository
+import novalogics.android.styles.data.type.FashionCategory
 import novalogics.android.styles.ui.common.component.LoadingScreen
 import novalogics.android.styles.ui.common.component.StyledText
 import novalogics.android.styles.ui.theme.StylesByNovaTheme
 import novalogics.android.styles.ui.screens.home.component.CustomDropdown
+import novalogics.android.styles.ui.screens.home.component.LoadingBar
 import novalogics.android.styles.ui.screens.home.component.SearchBarStatic
 import novalogics.android.styles.ui.screens.home.component.TopAppBar
 import novalogics.android.styles.ui.screens.home.component.ViewPagerDotsIndicator
@@ -65,7 +67,7 @@ fun HomeScreen(
         uiState = uiState,
         onDropdownSelectionChange = { category->
             viewModel.handleIntent(
-                HomeIntent.CategoryChangeActions(category)
+                HomeIntent.ChangeFashionCategory(category)
             )
         }
     )
@@ -74,7 +76,7 @@ fun HomeScreen(
 @Composable
 fun ScreenUiContent(
     uiState : HomeUiState,
-    onDropdownSelectionChange: (MainCategory) -> Unit
+    onDropdownSelectionChange: (FashionCategory) -> Unit
 ){
     val scrollState = rememberLazyListState()
 
@@ -104,7 +106,8 @@ fun ScreenUiContent(
             )
 
             HeaderSearchWithDropdown(
-                onDropdownSelectionChange = onDropdownSelectionChange
+                onDropdownSelectionChange = onDropdownSelectionChange,
+                selectedCategory = uiState.fashionCategory
             )
 
             LazyColumn(
@@ -113,8 +116,8 @@ fun ScreenUiContent(
             ) {
                 item {
                     HorizontalPager(
-                        bannerUrls = uiState.bannerItemList,
-                        category = uiState.selectedMainCategory
+                        bannerUrls = uiState.bannerItems,
+                        category = uiState.fashionCategory
                     )
                 }
                 item {
@@ -124,21 +127,24 @@ fun ScreenUiContent(
                 }
                 item {
                     EventGridView(
-                        events = uiState.eventCategoryList,
+                        events = uiState.eventCategories,
                     )
                 }
             }
         }
 
-        if (uiState.isLoading) {
-            LoadingScreen()
-        }
+        LoadingBar(
+            isLoading = uiState.isLoading,
+            message = uiState.loadingMessage
+        )
+
     }
 }
 
 @Composable
 fun HeaderSearchWithDropdown(
-    onDropdownSelectionChange: (MainCategory) -> Unit,
+    onDropdownSelectionChange: (FashionCategory) -> Unit,
+    selectedCategory: FashionCategory
 ) {
     Row(modifier = Modifier
         .fillMaxWidth()
@@ -156,6 +162,7 @@ fun HeaderSearchWithDropdown(
 
         CustomDropdown(
             onSelectionChange = onDropdownSelectionChange,
+            selectedCategory = selectedCategory,
             modifier = Modifier.weight(0.3f)
         )
     }
@@ -164,7 +171,7 @@ fun HeaderSearchWithDropdown(
 @Composable
 fun HorizontalPager(
     bannerUrls: List<String>,
-    category: MainCategory
+    category: FashionCategory
 ) {
     val pageCount = bannerUrls.size
     val pagerState = rememberPagerState(pageCount = { pageCount })
@@ -268,7 +275,7 @@ fun EventItem(
 
         StyledText(
             modifier = Modifier.padding(top = dimensionResource(id = R.dimen.padding_regular_8dp)),
-            stringResId = event.nameResId,
+            stringValue = event.name,
             fontSize = R.dimen.text_size_small_12sp,
             style = typography.displayMedium,
             isUppercase = true
@@ -276,7 +283,7 @@ fun EventItem(
 
         StyledText(
             modifier = Modifier.offset(y = 2.dp),
-            stringResId = event.categoryResId,
+            stringValue = event.eventCategory,
             fontSize = R.dimen.text_size_xsmall_10sp,
             color = colorScheme.onSecondaryContainer,
             style = typography.labelSmall,
@@ -298,9 +305,11 @@ fun EventItem(
 )
 @Composable
 fun HomeScreenPreview(){
+    val context = LocalContext.current
+
     val uiState = HomeUiState(
-        bannerItemList = HomeRepositoryOffline().getBannerUrls(),
-        eventCategoryList = HomeRepositoryOffline().getDemoEventsWomen(),
+        bannerItems = StaticRepository.getBannerUrls(),
+        eventCategories = StaticRepository.getWomenEvents(context = context),
     )
     StylesByNovaTheme {
 

@@ -19,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -34,13 +33,14 @@ import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
 import kotlinx.coroutines.delay
 import novalogics.android.styles.R
-import novalogics.android.styles.data.type.MainCategory
+import novalogics.android.styles.data.type.FashionCategory
+import novalogics.android.styles.util.Constants.DELAY_4_SECONDS
 
 @Composable
 fun ViewPagerUnit(
     bannerUrls: List<String>,
     pageIndex: Int,
-    category: MainCategory
+    category: FashionCategory
 ) {
     Box(
         modifier = Modifier
@@ -55,11 +55,12 @@ fun ViewPagerUnit(
             val backgroundResIds: List<Int> = listOf(
                 R.drawable.img_banner_bg_1,
                 R.drawable.img_banner_bg_2,
-                R.drawable.img_banner_bg_3
+                R.drawable.img_banner_bg_3,
+                R.drawable.img_banner_bg_4
             )
 
             val foreground =
-                if (category == MainCategory.MEN) R.drawable.img_banner_men_1
+                if (category == FashionCategory.MEN) R.drawable.img_banner_men_1
                 else R.drawable.img_banner_women_1
 
 
@@ -67,7 +68,7 @@ fun ViewPagerUnit(
 
             // Update the index every 10 seconds
             LaunchedEffect(key1 = index) {
-                delay(4000L) // 10 seconds delay
+                delay(DELAY_4_SECONDS) // 10 seconds delay
                 index = (index + 1) % backgroundResIds.size // Cycle through images
             }
 
@@ -165,6 +166,6 @@ private fun ViewPagerItemPreview() {
     ViewPagerUnit(
         bannerUrls = listOf(),
         pageIndex = 0,
-        category = MainCategory.WOMEN
+        category = FashionCategory.WOMEN
     )
 }
