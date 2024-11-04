@@ -14,6 +14,7 @@ import novalogics.android.styles.data.datastore.DataStoreRepository
 import novalogics.android.styles.data.repository.local.LocalDataRepository
 import novalogics.android.styles.data.type.FashionCategory
 import novalogics.android.styles.util.Constants.DELAY_1_SECOND
+import novalogics.android.styles.util.Constants.DELAY_2_SECONDS
 import javax.inject.Inject
 
 @HiltViewModel
@@ -61,9 +62,11 @@ class HomeViewModel @Inject constructor(
                 )
             }
 
-            handleIntent(HomeIntent.ChangeFashionCategory(getFashionCategory()))
+            handleIntent(
+                HomeIntent.ChangeFashionCategory(getFashionCategory())
+            )
 
-            delay(DELAY_1_SECOND)
+            delay(DELAY_2_SECONDS)
 
             _uiState.update { currentUiState ->
                 currentUiState.copy(isLoading = false)
