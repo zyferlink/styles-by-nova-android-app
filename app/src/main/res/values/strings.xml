@@ -14,6 +14,8 @@
     <string name="you">You</string>
 
     <string name="please_wait">Please wait…</string>
+    <string name="message_loading">Loading…</string>
+    <string name="message_successful">Successful…✨</string>
 
     <string-array name="tab_items">
         <item>Home</item>

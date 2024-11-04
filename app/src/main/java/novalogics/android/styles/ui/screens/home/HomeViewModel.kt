@@ -1,26 +1,29 @@
 package novalogics.android.styles.ui.screens.home
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import novalogics.android.styles.R
 import novalogics.android.styles.data.datastore.DataStoreKeys
 import novalogics.android.styles.data.datastore.DataStoreRepository
 import novalogics.android.styles.data.repository.local.LocalDataRepository
 import novalogics.android.styles.data.type.FashionCategory
 import novalogics.android.styles.util.Constants.DELAY_1_SECOND
-import novalogics.android.styles.util.Constants.DELAY_2_SECONDS
 import novalogics.android.styles.util.Constants.DELAY_3_SECONDS
-import novalogics.android.styles.util.Constants.DELAY_4_SECONDS
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
+    @ApplicationContext
+    private val context: Context,
     private val localDataRepository: LocalDataRepository,
     private val dataStoreRepository: DataStoreRepository,
 ) : ViewModel() {
@@ -60,7 +63,7 @@ class HomeViewModel @Inject constructor(
             _uiState.update { currentUiState ->
                 currentUiState.copy(
                     isLoading = true,
-                    loadingMessage = "Loading...",
+                    loadingMessage = context.getString(R.string.message_loading),
                     bannerItems = localDataRepository.getBannerUrls(),
                 )
             }
@@ -70,15 +73,13 @@ class HomeViewModel @Inject constructor(
             )
 
             delay(DELAY_3_SECONDS)
-            _uiState.update { currentUiState ->
-                currentUiState.copy(
-                    loadingMessage = "Successful...✨",
+            _uiState.update { it.copy(
+                loadingMessage = context.getString(R.string.message_successful),
                 )
             }
             delay(DELAY_1_SECOND)
 
-            _uiState.update { currentUiState ->
-                currentUiState.copy(
+            _uiState.update { it.copy(
                     isLoading = false,
                 )
             }
