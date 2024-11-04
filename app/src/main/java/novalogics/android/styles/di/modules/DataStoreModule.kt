@@ -10,6 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import novalogics.android.styles.data.datastore.DataStoreRepository
 import novalogics.android.styles.data.datastore.DataStoreRepositoryImpl
 import javax.inject.Singleton
 
@@ -35,7 +36,7 @@ object DataStoreModule {
     @Singleton
     fun provideDataStoreRepository(
         dataStore: DataStore<Preferences>
-    ): DataStoreRepositoryImpl {
+    ): DataStoreRepository {
         return DataStoreRepositoryImpl(dataStore)
     }
 }
