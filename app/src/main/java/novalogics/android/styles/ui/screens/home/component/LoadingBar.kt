@@ -21,13 +21,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Surface
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import novalogics.android.styles.data.type.FashionCategory
-import novalogics.android.styles.ui.common.component.LoadingScreen
+import novalogics.android.styles.R
+import novalogics.android.styles.ui.common.component.textSizeResource
 import novalogics.android.styles.ui.theme.StylesByNovaTheme
 import novalogics.android.styles.util.Constants
 
@@ -46,27 +45,31 @@ fun LoadingBar(
         Box(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(dimensionResource(id = R.dimen.padding_medium_16dp))
                 .background(
-                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
+                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
                     shape = RoundedCornerShape(8.dp)
-                )
-                .padding(16.dp),
+                ),
             contentAlignment = Alignment.Center
         ) {
             Row(
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_large_24dp)),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center
             ) {
                 CircularProgressIndicator(
-                    color = Color.White,
-                    modifier = Modifier.size(24.dp) // Size of the loader
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(dimensionResource(id = R.dimen.size_medium_40dp))
                 )
-                Spacer(modifier = Modifier.width(8.dp))
+                Spacer(
+                    modifier = Modifier.width(dimensionResource(id = R.dimen.padding_large_24dp))
+                )
                 Text(
                     text = message,
-                    color = Color.White,
-                    style = MaterialTheme.typography.displayMedium
+                    color = MaterialTheme.colorScheme.background,
+                    style = MaterialTheme.typography.displayMedium,
+                    fontSize = textSizeResource(id = R.dimen.text_size_large_20sp),
+                    modifier = Modifier.padding(end = dimensionResource(id = R.dimen.padding_xlarge_32dp))
                 )
             }
         }
