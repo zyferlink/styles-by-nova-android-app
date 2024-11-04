@@ -107,15 +107,14 @@ class HomeViewModel @Inject constructor(
 
     private fun getFashionCategory(): FashionCategory {
         return try {
-            val category = getFashionCategoryAsString()
-            Log.d("HomeViewModel", "getFashionCategory: $category")
-            FashionCategory.valueOf(category)
+            FashionCategory.valueOf(getFashionCategoryAsString())
         } catch (e: IllegalArgumentException) {
             FashionCategory.DEFAULT
         }
     }
 
     private fun getFashionCategoryAsString(): String = runBlocking {
+        //runBlocking : Runs a new coroutine and blocks the current thread until its completion.
         dataStoreRepository.getString(DataStoreKeys.FashionCategory.key) ?: FashionCategory.DEFAULT.name
     }
 
