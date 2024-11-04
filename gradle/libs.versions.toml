@@ -28,7 +28,7 @@ gsonVersion = "2.11.0"
 paletteVersion = "1.0.0"
 splashscreen = "1.0.1"
 accompanistPagerIndicators = "0.30.1"
-
+datastore = "1.0.0"
 
 [libraries]
 # Architecture
@@ -78,6 +78,8 @@ androidx-palette-ktx = { group = "androidx.palette", name = "palette-ktx", versi
 accompanist-pager-indicators = { group = "com.google.accompanist", name = "accompanist-pager-indicators", version.ref = "accompanistPagerIndicators" }
 # splashscreen
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "splashscreen" }
+# DataStore
+datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
 
 # Unit Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }
