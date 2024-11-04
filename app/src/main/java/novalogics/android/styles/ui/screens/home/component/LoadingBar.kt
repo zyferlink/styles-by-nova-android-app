@@ -52,7 +52,7 @@ fun LoadingBar(
         ),
         exit = slideOutVertically(
             targetOffsetY = { it },
-            animationSpec = tween(durationMillis = 4000)
+            animationSpec = tween(durationMillis = 3000)
         )
     ) {
 

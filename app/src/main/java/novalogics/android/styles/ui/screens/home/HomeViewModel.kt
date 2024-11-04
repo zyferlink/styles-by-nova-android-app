@@ -15,6 +15,7 @@ import novalogics.android.styles.data.repository.local.LocalDataRepository
 import novalogics.android.styles.data.type.FashionCategory
 import novalogics.android.styles.util.Constants.DELAY_1_SECOND
 import novalogics.android.styles.util.Constants.DELAY_2_SECONDS
+import novalogics.android.styles.util.Constants.DELAY_3_SECONDS
 import novalogics.android.styles.util.Constants.DELAY_4_SECONDS
 import javax.inject.Inject
 
@@ -68,12 +69,17 @@ class HomeViewModel @Inject constructor(
                 HomeIntent.ChangeFashionCategory(getFashionCategory())
             )
 
-            delay(DELAY_2_SECONDS)
+            delay(DELAY_3_SECONDS)
+            _uiState.update { currentUiState ->
+                currentUiState.copy(
+                    loadingMessage = "Successful...✨",
+                )
+            }
+            delay(DELAY_1_SECOND)
 
             _uiState.update { currentUiState ->
                 currentUiState.copy(
                     isLoading = false,
-                    loadingMessage = "Successful... ✨",
                 )
             }
         }
