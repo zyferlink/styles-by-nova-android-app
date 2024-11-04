@@ -10,7 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import novalogics.android.styles.data.datastore.DataStoreManager
+import novalogics.android.styles.data.datastore.DataStoreRepository
 import javax.inject.Singleton
 
 const val DATA_STORE_FILE = "app_preferences"
@@ -33,9 +33,9 @@ object DataStoreModule {
 
     @Provides
     @Singleton
-    fun provideDataStoreManager(
+    fun provideDataStoreRepository(
         dataStore: DataStore<Preferences>
-    ): DataStoreManager {
-        return DataStoreManager(dataStore)
+    ): DataStoreRepository {
+        return DataStoreRepository(dataStore)
     }
 }

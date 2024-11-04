@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.map
 import novalogics.android.styles.data.type.FashionCategory
 import javax.inject.Inject
 
-class DataStoreManager @Inject constructor(
+class DataStoreRepository @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) {
     // Generic method to save a string value using a key
