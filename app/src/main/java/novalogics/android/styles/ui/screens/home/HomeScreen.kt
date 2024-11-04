@@ -66,7 +66,7 @@ fun HomeScreen(
         uiState = uiState,
         onDropdownSelectionChange = { category->
             viewModel.handleIntent(
-                HomeIntent.CategoryChangeActions(category)
+                HomeIntent.ChangeFashionCategory(category)
             )
         }
     )
@@ -106,7 +106,7 @@ fun ScreenUiContent(
 
             HeaderSearchWithDropdown(
                 onDropdownSelectionChange = onDropdownSelectionChange,
-                selectedCategory = uiState.selectedFashionCategory
+                selectedCategory = uiState.fashionCategory
             )
 
             LazyColumn(
@@ -116,7 +116,7 @@ fun ScreenUiContent(
                 item {
                     HorizontalPager(
                         bannerUrls = uiState.bannerItems,
-                        category = uiState.selectedFashionCategory
+                        category = uiState.fashionCategory
                     )
                 }
                 item {

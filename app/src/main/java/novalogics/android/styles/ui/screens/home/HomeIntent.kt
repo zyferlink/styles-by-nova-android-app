@@ -4,7 +4,7 @@ import novalogics.android.styles.data.type.FashionCategory
 
 sealed class HomeIntent {
     data object LoadData : HomeIntent()
-    data class UpdateSearchField(val newValue: String) : HomeIntent()
-    data class CategoryChangeActions(val category: FashionCategory) : HomeIntent()
+    data class ChangeSearchText(val newValue: String) : HomeIntent()
+    data class ChangeFashionCategory(val category: FashionCategory) : HomeIntent()
     data object ClearError : HomeIntent()
 }

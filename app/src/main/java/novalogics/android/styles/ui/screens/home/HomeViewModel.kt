@@ -1,10 +1,8 @@
 package novalogics.android.styles.ui.screens.home
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,13 +13,11 @@ import novalogics.android.styles.data.datastore.DataStoreKeys
 import novalogics.android.styles.data.datastore.DataStoreRepository
 import novalogics.android.styles.data.repository.local.LocalDataRepository
 import novalogics.android.styles.data.type.FashionCategory
-import novalogics.android.styles.util.Constants.DELAY_2_SECONDS
+import novalogics.android.styles.util.Constants.DELAY_1_SECOND
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    @ApplicationContext
-    private val context: Context,
     private val localDataRepository: LocalDataRepository,
     private val dataStoreRepository: DataStoreRepository,
 ) : ViewModel() {
@@ -29,11 +25,15 @@ class HomeViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState
 
-    private fun reduce(currentState: HomeUiState, intent: HomeIntent): HomeUiState {
+    private fun reduce(
+        currentState: HomeUiState,
+        intent: HomeIntent
+    ): HomeUiState {
+
         return when (intent) {
             is HomeIntent.LoadData -> currentState.copy(isLoading = true)
-            is HomeIntent.UpdateSearchField -> currentState.copy(searchFieldValue = intent.newValue)
-            is HomeIntent.CategoryChangeActions -> currentState.copy(selectedFashionCategory = intent.category)
+            is HomeIntent.ChangeSearchText -> currentState.copy(searchFieldValue = intent.newValue)
+            is HomeIntent.ChangeFashionCategory -> currentState.copy(fashionCategory = intent.category)
             is HomeIntent.ClearError -> currentState.copy(error = null)
         }
     }
@@ -41,10 +41,9 @@ class HomeViewModel @Inject constructor(
     fun handleIntent(intent: HomeIntent) {
         _uiState.value = reduce(_uiState.value, intent)
 
-        // side-effect handling
-        when (intent) {
+        when (intent) { // side-effect handling
             is HomeIntent.LoadData -> loadDataOffline()
-            is HomeIntent.CategoryChangeActions -> handleCategoryChangeActions(intent.category)
+            is HomeIntent.ChangeFashionCategory -> handleCategoryChangeActions(intent.category)
             else -> {}
         }
     }
@@ -62,9 +61,9 @@ class HomeViewModel @Inject constructor(
                 )
             }
 
-            handleIntent(HomeIntent.CategoryChangeActions(getFashionCategory()))
+            handleIntent(HomeIntent.ChangeFashionCategory(getFashionCategory()))
 
-            delay(DELAY_2_SECONDS)
+            delay(DELAY_1_SECOND)
 
             _uiState.update { currentUiState ->
                 currentUiState.copy(isLoading = false)
