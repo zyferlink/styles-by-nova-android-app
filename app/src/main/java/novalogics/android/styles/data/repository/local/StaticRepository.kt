@@ -143,7 +143,7 @@ object StaticRepository {
             name = context.getString(R.string.coastal_cool),
             eventCategory = context.getString(R.string.evening),
             fashionCategory = FashionCategory.MEN,
-            imageResId = R.drawable.event_men_evening,
+            imageResId = R.drawable.event_men_beach,
             description = null,
             imageLink = null,
         ),
