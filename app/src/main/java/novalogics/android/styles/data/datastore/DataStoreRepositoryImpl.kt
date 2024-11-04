@@ -26,26 +26,25 @@ class DataStoreRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getString(key: String): String? {
+    override suspend fun getString(key: String, defaultValue: String): String {
         return try {
             val preferencesKey = stringPreferencesKey(key)
             val preferences = dataStore.data.first()
-            preferences[preferencesKey]
-        }catch (e: Exception){
+            preferences[preferencesKey] ?: defaultValue
+        } catch (e: Exception) {
             e.printStackTrace()
-            null
+            defaultValue
         }
     }
 
-    override suspend fun getInt(key: String): Int? {
+    override suspend fun getInt(key: String, defaultValue: Int): Int {
         return try {
             val preferencesKey = intPreferencesKey(key)
             val preferences = dataStore.data.first()
-            preferences[preferencesKey]
-        }catch (e: Exception){
+            preferences[preferencesKey] ?: defaultValue
+        } catch (e: Exception) {
             e.printStackTrace()
-            null
+            defaultValue
         }
     }
-
 }

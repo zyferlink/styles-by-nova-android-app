@@ -114,7 +114,10 @@ class HomeViewModel @Inject constructor(
 
     private fun getFashionCategoryAsString(): String = runBlocking {
         //runBlocking : Runs a new coroutine and blocks the current thread until its completion.
-        dataStoreRepository.getString(DataStoreKeys.SelectedFashionCategory.key) ?: FashionCategory.DEFAULT.name
+        dataStoreRepository.getString(
+            key = DataStoreKeys.SelectedFashionCategory.key,
+            defaultValue = FashionCategory.DEFAULT.name
+        )
     }
 
     fun handleError() {
