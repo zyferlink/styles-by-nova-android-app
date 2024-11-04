@@ -19,7 +19,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -34,13 +33,13 @@ import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
 import kotlinx.coroutines.delay
 import novalogics.android.styles.R
-import novalogics.android.styles.data.type.MainCategory
+import novalogics.android.styles.data.type.FashionCategory
 
 @Composable
 fun ViewPagerUnit(
     bannerUrls: List<String>,
     pageIndex: Int,
-    category: MainCategory
+    category: FashionCategory
 ) {
     Box(
         modifier = Modifier
@@ -59,7 +58,7 @@ fun ViewPagerUnit(
             )
 
             val foreground =
-                if (category == MainCategory.MEN) R.drawable.img_banner_men_1
+                if (category == FashionCategory.MEN) R.drawable.img_banner_men_1
                 else R.drawable.img_banner_women_1
 
 
@@ -165,6 +164,6 @@ private fun ViewPagerItemPreview() {
     ViewPagerUnit(
         bannerUrls = listOf(),
         pageIndex = 0,
-        category = MainCategory.WOMEN
+        category = FashionCategory.WOMEN
     )
 }

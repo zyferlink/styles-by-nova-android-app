@@ -10,9 +10,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import novalogics.android.styles.R
 import novalogics.android.styles.data.repository.HomeRepositoryOffline
-import novalogics.android.styles.data.type.MainCategory
+import novalogics.android.styles.data.type.FashionCategory
 import novalogics.android.styles.util.Constants.DELAY_2_SECONDS
 import javax.inject.Inject
 
@@ -30,7 +29,7 @@ class HomeViewModel @Inject constructor(
         return when (intent) {
             is HomeIntent.LoadData -> currentState.copy(isLoading = true)
             is HomeIntent.UpdateSearchField -> currentState.copy(searchFieldValue = intent.newValue)
-            is HomeIntent.CategoryChangeActions -> currentState.copy(selectedMainCategory = intent.category)
+            is HomeIntent.CategoryChangeActions -> currentState.copy(selectedFashionCategory = intent.category)
             is HomeIntent.ClearError -> currentState.copy(error = null)
         }
     }
@@ -59,7 +58,7 @@ class HomeViewModel @Inject constructor(
                 )
             }
 
-            handleCategoryChangeActions(MainCategory.WOMEN)
+            handleCategoryChangeActions(FashionCategory.WOMEN)
 
             delay(DELAY_2_SECONDS)
 
@@ -70,23 +69,23 @@ class HomeViewModel @Inject constructor(
     }
 
 
-    private fun handleCategoryChangeActions(category: MainCategory){
+    private fun handleCategoryChangeActions(category: FashionCategory){
         when (category) {
-            MainCategory.WOMEN -> {
+            FashionCategory.WOMEN -> {
                 _uiState.update { currentUiState ->
                     currentUiState.copy(
                         eventCategoryList = repositoryOffline.getDemoEventsWomen()
                     )
                 }
             }
-            MainCategory.MEN -> {
+            FashionCategory.MEN -> {
                 _uiState.update { currentUiState ->
                     currentUiState.copy(
                         eventCategoryList = repositoryOffline.getDemoEventsMen()
                     )
                 }
             }
-            MainCategory.KIDS -> {}
+            FashionCategory.KIDS -> {}
             else -> {}
         }
     }

@@ -43,7 +43,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.styles.R
 import novalogics.android.styles.data.model.home.EventEntity
 import novalogics.android.styles.data.repository.HomeRepositoryOffline
-import novalogics.android.styles.data.type.MainCategory
+import novalogics.android.styles.data.type.FashionCategory
 import novalogics.android.styles.ui.common.component.LoadingScreen
 import novalogics.android.styles.ui.common.component.StyledText
 import novalogics.android.styles.ui.theme.StylesByNovaTheme
@@ -74,7 +74,7 @@ fun HomeScreen(
 @Composable
 fun ScreenUiContent(
     uiState : HomeUiState,
-    onDropdownSelectionChange: (MainCategory) -> Unit
+    onDropdownSelectionChange: (FashionCategory) -> Unit
 ){
     val scrollState = rememberLazyListState()
 
@@ -114,7 +114,7 @@ fun ScreenUiContent(
                 item {
                     HorizontalPager(
                         bannerUrls = uiState.bannerItemList,
-                        category = uiState.selectedMainCategory
+                        category = uiState.selectedFashionCategory
                     )
                 }
                 item {
@@ -138,7 +138,7 @@ fun ScreenUiContent(
 
 @Composable
 fun HeaderSearchWithDropdown(
-    onDropdownSelectionChange: (MainCategory) -> Unit,
+    onDropdownSelectionChange: (FashionCategory) -> Unit,
 ) {
     Row(modifier = Modifier
         .fillMaxWidth()
@@ -164,7 +164,7 @@ fun HeaderSearchWithDropdown(
 @Composable
 fun HorizontalPager(
     bannerUrls: List<String>,
-    category: MainCategory
+    category: FashionCategory
 ) {
     val pageCount = bannerUrls.size
     val pagerState = rememberPagerState(pageCount = { pageCount })

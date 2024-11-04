@@ -1,6 +1,6 @@
 package novalogics.android.styles.data.type
 
-enum class MainCategory {
+enum class FashionCategory {
     WOMEN,
     MEN,
     KIDS,

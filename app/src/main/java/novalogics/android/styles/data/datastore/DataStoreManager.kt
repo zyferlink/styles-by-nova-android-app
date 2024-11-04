@@ -5,7 +5,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import novalogics.android.styles.data.type.MainCategory
+import novalogics.android.styles.data.type.FashionCategory
 import javax.inject.Inject
 
 class DataStoreManager @Inject constructor(
@@ -28,7 +28,7 @@ class DataStoreManager @Inject constructor(
 
     val getFashionCategory: Flow<String> = dataStore.data
         .map { pref ->
-            pref[DataStoreStringKey.FashionCategory.key] ?: MainCategory.DEFAULT.name
+            pref[DataStoreStringKey.FashionCategory.key] ?: FashionCategory.DEFAULT.name
         }
 
     suspend fun saveFashionCategory(value: String) {
