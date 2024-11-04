@@ -41,7 +41,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.styles.R
-import novalogics.android.styles.data.model.home.EventEntity
+import novalogics.android.styles.data.model.home.Event
 import novalogics.android.styles.data.repository.local.LocalDataRepositoryImpl
 import novalogics.android.styles.data.type.FashionCategory
 import novalogics.android.styles.ui.common.component.LoadingScreen
@@ -218,7 +218,7 @@ fun SectionDivideTitle(
 
 @Composable
 fun EventGridView(
-    events: List<EventEntity>
+    events: List<Event>
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -237,7 +237,7 @@ fun EventGridView(
 
 @Composable
 fun EventItem(
-    event: EventEntity
+    event: Event
 ) {
     Column(
         modifier = Modifier

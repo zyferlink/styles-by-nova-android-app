@@ -100,7 +100,7 @@ class HomeViewModel @Inject constructor(
 
     private fun saveFashionCategory(value: String) {
         viewModelScope.launch {
-            dataStoreRepository.putString(DataStoreKeys.FashionCategory.key, value)
+            dataStoreRepository.putString(DataStoreKeys.SelectedFashionCategory.key, value)
         }
     }
 
@@ -114,7 +114,7 @@ class HomeViewModel @Inject constructor(
 
     private fun getFashionCategoryAsString(): String = runBlocking {
         //runBlocking : Runs a new coroutine and blocks the current thread until its completion.
-        dataStoreRepository.getString(DataStoreKeys.FashionCategory.key) ?: FashionCategory.DEFAULT.name
+        dataStoreRepository.getString(DataStoreKeys.SelectedFashionCategory.key) ?: FashionCategory.DEFAULT.name
     }
 
     fun handleError() {

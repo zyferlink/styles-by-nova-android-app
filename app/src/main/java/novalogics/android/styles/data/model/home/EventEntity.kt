@@ -1,13 +1,15 @@
 package novalogics.android.styles.data.model.home
 
 import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
+import novalogics.android.styles.data.type.FashionCategory
 
 data class EventEntity(
-    @StringRes
-    val nameResId: Int,
-    @StringRes
-    val categoryResId: Int,
+    val id: Int,
+    val name: String,
+    val eventCategory: String,
+    val fashionCategory: FashionCategory,
+    val description: String?,
+    val imageLink: String?,
     @DrawableRes
-    val imageResId: Int
+    val imageResId: Int,
 )

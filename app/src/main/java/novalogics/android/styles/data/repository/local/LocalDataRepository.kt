@@ -1,7 +1,7 @@
 package novalogics.android.styles.data.repository.local
 
 import novalogics.android.styles.data.model.home.BannerEntity
-import novalogics.android.styles.data.model.home.EventEntity
+import novalogics.android.styles.data.model.home.Event
 
 interface LocalDataRepository {
 
@@ -9,8 +9,8 @@ interface LocalDataRepository {
 
     fun getBannerUrls(): List<String>
 
-    fun getDemoEventsWomen(): List<EventEntity>
+    fun getDemoEventsWomen(): List<Event>
 
-    fun getDemoEventsMen(): List<EventEntity>
+    fun getDemoEventsMen(): List<Event>
 
 }
