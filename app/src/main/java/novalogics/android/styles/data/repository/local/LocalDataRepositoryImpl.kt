@@ -1,10 +1,17 @@
 package novalogics.android.styles.data.repository.local
 
+import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
 import novalogics.android.styles.R
 import novalogics.android.styles.data.model.home.BannerEntity
 import novalogics.android.styles.data.model.home.Event
+import novalogics.android.styles.data.model.home.EventEntity
+import javax.inject.Inject
 
-class LocalDataRepositoryImpl : LocalDataRepository {
+class LocalDataRepositoryImpl @Inject constructor(
+    @ApplicationContext
+    private val context: Context
+) : LocalDataRepository {
 
     override fun getDemoBanners(): List<BannerEntity> {
         return listOf(
@@ -23,22 +30,8 @@ class LocalDataRepositoryImpl : LocalDataRepository {
     }
 
 
-    override fun getDemoEventsWomen(): List<Event> {
-        return listOf(
-            Event(nameResId = R.string.twilight_elegance, categoryResId = R.string.evening, imageResId = R.drawable.event_women_evening),
-            Event(nameResId = R.string.coastal_breeze, categoryResId = R.string.beach_days, imageResId = R.drawable.event_women_beach),
-            Event(nameResId = R.string.gala_glamour, categoryResId = R.string.special_event, imageResId = R.drawable.event_women_gala_glamour),
-            Event(nameResId = R.string.mix_and_mingle, categoryResId = R.string.cocktail_party, imageResId = R.drawable.event_women_mix_mingle),
-            Event(nameResId = R.string.elegant_affair, categoryResId = R.string.formal_black_tie, imageResId = R.drawable.placeholder_event),
-
-            Event(nameResId = R.string.eternal_elegance, categoryResId = R.string.weddings, imageResId = R.drawable.placeholder_event),
-            Event(nameResId = R.string.radiant_night, categoryResId = R.string.prom_or_formal_dances, imageResId = R.drawable.placeholder_event),
-            Event(nameResId = R.string.cap_and_gown_glam, categoryResId = R.string.graduation, imageResId = R.drawable.placeholder_event),
-            Event(nameResId = R.string.casual_couture, categoryResId = R.string.brunch_with_friends, imageResId = R.drawable.placeholder_event),
-            Event(nameResId = R.string.bohemian_vibes, categoryResId = R.string.outdoor_festivals, imageResId = R.drawable.placeholder_event),
-
-            Event(nameResId = R.string.casual_chic, categoryResId = R.string.everyday_essence, imageResId = R.drawable.placeholder_event),
-        )
+    override fun getWomenEvents(): List<EventEntity> {
+        return StaticRepository.getWomenEvents(context = context)
     }
 
 

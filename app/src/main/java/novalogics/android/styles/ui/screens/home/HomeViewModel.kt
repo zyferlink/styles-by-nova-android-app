@@ -79,7 +79,7 @@ class HomeViewModel @Inject constructor(
             FashionCategory.WOMEN -> {
                 _uiState.update { currentUiState ->
                     currentUiState.copy(
-                        eventCategoryList = localDataRepository.getDemoEventsWomen()
+                        eventCategoryList = localDataRepository.getWomenEvents()
                     )
                 }
 
