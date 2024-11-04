@@ -8,6 +8,7 @@ import novalogics.android.styles.data.type.FashionCategory
 
 object StaticRepository {
 
+// -- Women Events
     fun getWomenEvents(context: Context): List<EventEntity> {
         return listOf(
             EventEntity(
@@ -112,6 +113,91 @@ object StaticRepository {
         )
     }
 
-
+    // -- Men Events
+    fun getMenEvents(context: Context): List<EventEntity> {
+        return listOf(
+            EventEntity(
+                id = 2001,
+                name = context.getString(R.string.fearless_fierce),
+                eventCategory = context.getString(R.string.evening),
+                fashionCategory = FashionCategory.MEN,
+                imageResId = R.drawable.event_men_evening,
+                description = null,
+                imageLink = null,
+            ),
+            EventEntity(
+                id = 2002,
+                name = context.getString(R.string.coastal_cool),
+                eventCategory = context.getString(R.string.evening),
+                fashionCategory = FashionCategory.MEN,
+                imageResId = R.drawable.event_men_evening,
+                description = null,
+                imageLink = null,
+            ),
+            EventEntity(
+                id = 2003,
+                name = context.getString(R.string.gentlemans_night),
+                eventCategory = context.getString(R.string.date_nights),
+                fashionCategory = FashionCategory.MEN,
+                imageResId = R.drawable.event_men_date_night,
+                description = null,
+                imageLink = null,
+            ),
+            EventEntity(
+                id = 2004,
+                name = context.getString(R.string.executive_edge),
+                eventCategory = context.getString(R.string.formal_black_tie),
+                fashionCategory = FashionCategory.MEN,
+                imageResId = R.drawable.event_men_formal,
+                description = null,
+                imageLink = null,
+            ),
+            EventEntity(
+                id = 2005,
+                name = context.getString(R.string.classic_command),
+                eventCategory = context.getString(R.string.weddings),
+                fashionCategory = FashionCategory.MEN,
+                imageResId = R.drawable.placeholder_event,
+                description = null,
+                imageLink = null,
+            ),
+            EventEntity(
+                id = 2006,
+                name = context.getString(R.string.suave_soiree),
+                eventCategory = context.getString(R.string.prom_or_formal_dances),
+                fashionCategory = FashionCategory.MEN,
+                imageResId = R.drawable.placeholder_event,
+                description = null,
+                imageLink = null,
+            ),
+            EventEntity(
+                id = 2007,
+                name = context.getString(R.string.casual_conqueror),
+                eventCategory = context.getString(R.string.brunch_with_friends),
+                fashionCategory = FashionCategory.MEN,
+                imageResId = R.drawable.placeholder_event,
+                description = null,
+                imageLink = null,
+            ),
+            EventEntity(
+                id = 2008,
+                name = context.getString(R.string.festive_force),
+                eventCategory = context.getString(R.string.outdoor_festivals),
+                fashionCategory = FashionCategory.MEN,
+                imageResId = R.drawable.placeholder_event,
+                description = null,
+                imageLink = null,
+            ),
+            EventEntity(
+                id = 2009,
+                name = context.getString(R.string.everyday_grit),
+                eventCategory = context.getString(R.string.everyday_essence),
+                fashionCategory = FashionCategory.MEN,
+                imageResId = R.drawable.placeholder_event,
+                description = null,
+                imageLink = null,
+            ),
+        )
+    }
 }
 

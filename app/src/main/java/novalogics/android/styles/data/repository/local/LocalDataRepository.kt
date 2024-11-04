@@ -12,6 +12,6 @@ interface LocalDataRepository {
 
     fun getWomenEvents(): List<EventEntity>
 
-    fun getDemoEventsMen(): List<Event>
+    fun getMenEvents(): List<EventEntity>
 
 }
