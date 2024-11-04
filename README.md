@@ -35,7 +35,7 @@
 
 <img src="./_assets/screenshots/alpha_light.png" width="320" height="720" />
 
-<img src="./_assets/screenshots/screen_men_light.png" width="320" height="720" />
+<img src="./_assets/screenshots/alpha_dark.png" width="320" height="720" />
 <br>
 
 </div>
@@ -69,20 +69,20 @@
 
 <p align="center">
 <img 
-  src="./_assets/screenshots/alpha_dark.png" 
-   width="210" height="460" 
-  />
-<img 
   src="./_assets/screenshots/alpha_light.png" 
   width="210" height="460" 
   />
 <img
-    src="./_assets/screenshots/screen_men_dark.png"
+    src="./_assets/screenshots/screen_women_dark.png"
     width="210" height="460"
   />
 <img
     src="./_assets/screenshots/screen_men_light.png"
     width="210" height="460"
+  />
+<img 
+  src="./_assets/screenshots/alpha_dark.png" 
+   width="210" height="460" 
   />
 </p>
 
@@ -274,15 +274,24 @@ ____
 
 ## 1. Project Log
 
-[2024 - OCT(10) - 22]
-1. Add Top Libraries and Plugins to the Project &nbsp;| &nbsp; [ More Info -> ](./_assets/docs/doc-version-catalogs.md#13-top-libraries-and-plugins-for-project-development)
+<details>
+ <summary> Init Project </summary>
+<br>
+
+1. Add Top Libraries and Plugins to the Project &nbsp;|
+   &nbsp; [ More Info -> ](./_assets/docs/doc-version-catalogs.md#13-top-libraries-and-plugins-for-project-development)
 2. Add App icon using Resource Manager > Image Asset
-3. Update Project Structure According to &nbsp;&nbsp;  [ Project Structure Document -> ](./_assets/docs/doc-project-structure.md)
+3. Update Project Structure According to
+   &nbsp;&nbsp;  [ Project Structure Document -> ](./_assets/docs/doc-project-structure.md)
 4. Add fonts, colors, shapes, dimes, theme
 5. Add necessary Strings/Texts, icons, images, placeholders
 6. Add Dagger hilt
 7. Add Common UI components
 8. Add Main & Home screens
+
+ </details>
+
+
 
 
 
