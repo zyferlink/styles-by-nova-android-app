@@ -42,7 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.styles.R
 import novalogics.android.styles.data.model.home.EventEntity
-import novalogics.android.styles.data.repository.HomeRepositoryOffline
+import novalogics.android.styles.data.repository.local.LocalDataRepositoryImpl
 import novalogics.android.styles.data.type.FashionCategory
 import novalogics.android.styles.ui.common.component.LoadingScreen
 import novalogics.android.styles.ui.common.component.StyledText
@@ -302,8 +302,8 @@ fun EventItem(
 @Composable
 fun HomeScreenPreview(){
     val uiState = HomeUiState(
-        bannerItemList = HomeRepositoryOffline().getBannerUrls(),
-        eventCategoryList = HomeRepositoryOffline().getDemoEventsWomen(),
+        bannerItemList = LocalDataRepositoryImpl().getBannerUrls(),
+        eventCategoryList = LocalDataRepositoryImpl().getDemoEventsWomen(),
     )
     StylesByNovaTheme {
 

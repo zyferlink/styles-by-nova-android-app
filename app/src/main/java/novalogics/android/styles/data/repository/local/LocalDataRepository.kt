@@ -1,9 +1,10 @@
-package novalogics.android.styles.data.repository
+package novalogics.android.styles.data.repository.local
 
 import novalogics.android.styles.data.model.home.BannerEntity
 import novalogics.android.styles.data.model.home.EventEntity
 
-interface HomeRepositoryImpl {
+interface LocalDataRepository {
+
     fun getDemoBanners(): List<BannerEntity>
 
     fun getBannerUrls(): List<String>

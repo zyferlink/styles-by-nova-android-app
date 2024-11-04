@@ -1,7 +1,6 @@
 package novalogics.android.styles.ui.screens.home
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import novalogics.android.styles.data.datastore.DataStoreKeys
 import novalogics.android.styles.data.datastore.DataStoreRepository
-import novalogics.android.styles.data.repository.HomeRepositoryOffline
+import novalogics.android.styles.data.repository.local.LocalDataRepository
 import novalogics.android.styles.data.type.FashionCategory
 import novalogics.android.styles.util.Constants.DELAY_2_SECONDS
 import javax.inject.Inject
@@ -23,7 +22,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     @ApplicationContext
     private val context: Context,
-    private val repositoryOffline: HomeRepositoryOffline,
+    private val localDataRepository: LocalDataRepository,
     private val dataStoreRepository: DataStoreRepository,
 ) : ViewModel() {
 
@@ -59,7 +58,7 @@ class HomeViewModel @Inject constructor(
             _uiState.update { currentUiState ->
                 currentUiState.copy(
                     isLoading = true,
-                    bannerItemList = repositoryOffline.getBannerUrls(),
+                    bannerItemList = localDataRepository.getBannerUrls(),
                 )
             }
 
@@ -80,7 +79,7 @@ class HomeViewModel @Inject constructor(
             FashionCategory.WOMEN -> {
                 _uiState.update { currentUiState ->
                     currentUiState.copy(
-                        eventCategoryList = repositoryOffline.getDemoEventsWomen()
+                        eventCategoryList = localDataRepository.getDemoEventsWomen()
                     )
                 }
 
@@ -89,7 +88,7 @@ class HomeViewModel @Inject constructor(
             FashionCategory.MEN -> {
                 _uiState.update { currentUiState ->
                     currentUiState.copy(
-                        eventCategoryList = repositoryOffline.getDemoEventsMen()
+                        eventCategoryList = localDataRepository.getDemoEventsMen()
                     )
                 }
                 saveFashionCategory(FashionCategory.MEN.name)
@@ -117,7 +116,6 @@ class HomeViewModel @Inject constructor(
         //runBlocking : Runs a new coroutine and blocks the current thread until its completion.
         dataStoreRepository.getString(DataStoreKeys.FashionCategory.key) ?: FashionCategory.DEFAULT.name
     }
-
 
     fun handleError() {
         _uiState.value = HomeUiState(error = "Something went wrong!")

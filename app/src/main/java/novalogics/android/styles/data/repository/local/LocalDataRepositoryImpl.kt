@@ -1,10 +1,10 @@
-package novalogics.android.styles.data.repository
+package novalogics.android.styles.data.repository.local
 
 import novalogics.android.styles.R
 import novalogics.android.styles.data.model.home.BannerEntity
 import novalogics.android.styles.data.model.home.EventEntity
 
-class HomeRepositoryOffline : HomeRepositoryImpl {
+class LocalDataRepositoryImpl : LocalDataRepository {
 
     override fun getDemoBanners(): List<BannerEntity> {
         return listOf(
