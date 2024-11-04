@@ -238,6 +238,9 @@
 #
 ### ⭓ Versions
 
+<details>
+ <summary> Version Details</summary>
+
 - Min SDK : 24
 - Target SDK  : 34
 - Compile SDK : 34
@@ -247,6 +250,11 @@
 - Kotlin Version : 2.0.20
 - Dagger Hilt Version : 2.52
 - Android Gradle Plugin Version : 8.5.2
+  <br>
+
+ </details>
+
+
 
 #
 ### ⭓ Features
