@@ -10,6 +10,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import novalogics.android.styles.data.datastore.DataStoreKeys
+import novalogics.android.styles.data.datastore.DataStoreRepository
 import novalogics.android.styles.data.repository.HomeRepositoryOffline
 import novalogics.android.styles.data.type.FashionCategory
 import novalogics.android.styles.util.Constants.DELAY_2_SECONDS
@@ -19,7 +22,8 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     @ApplicationContext
     private val context: Context,
-    private val repositoryOffline: HomeRepositoryOffline
+    private val repositoryOffline: HomeRepositoryOffline,
+    private val dataStoreRepository: DataStoreRepository,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(HomeUiState())
@@ -77,6 +81,8 @@ class HomeViewModel @Inject constructor(
                         eventCategoryList = repositoryOffline.getDemoEventsWomen()
                     )
                 }
+
+                saveFashionCategory(FashionCategory.WOMEN.name)
             }
             FashionCategory.MEN -> {
                 _uiState.update { currentUiState ->
@@ -84,10 +90,21 @@ class HomeViewModel @Inject constructor(
                         eventCategoryList = repositoryOffline.getDemoEventsMen()
                     )
                 }
+                saveFashionCategory(FashionCategory.MEN.name)
             }
             FashionCategory.KIDS -> {}
             else -> {}
         }
+    }
+
+    private fun saveFashionCategory(value: String) {
+        viewModelScope.launch {
+            dataStoreRepository.putString(DataStoreKeys.FashionCategory.key, value)
+        }
+    }
+
+    fun getFashionCategory(): String? = runBlocking {
+        dataStoreRepository.getString(DataStoreKeys.FashionCategory.key)
     }
 
 
