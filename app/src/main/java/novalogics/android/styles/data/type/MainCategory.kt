@@ -4,5 +4,5 @@ enum class MainCategory {
     WOMEN,
     MEN,
     KIDS,
-    NONE
+    DEFAULT
 }

@@ -37,7 +37,7 @@ fun CustomDropdown(
     val itemPosition = remember { mutableIntStateOf(0) }
 
     val categories = MainCategory.entries
-        .filter { it != MainCategory.NONE }
+        .filter { it != MainCategory.DEFAULT }
         .map { it.name }
 
     Column(

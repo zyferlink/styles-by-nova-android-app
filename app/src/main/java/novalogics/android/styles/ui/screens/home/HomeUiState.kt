@@ -7,7 +7,7 @@ data class HomeUiState(
     val isLoading: Boolean = false,
     val bannerItemList: List<String> = emptyList(),
     val eventCategoryList: List<EventEntity> = emptyList(),
-    val selectedMainCategory: MainCategory = MainCategory.NONE,
+    val selectedMainCategory: MainCategory = MainCategory.DEFAULT,
     val searchFieldValue: String = "",
     val error: String? = null
 )
