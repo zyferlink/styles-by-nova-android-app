@@ -55,7 +55,8 @@ fun ViewPagerUnit(
             val backgroundResIds: List<Int> = listOf(
                 R.drawable.img_banner_bg_1,
                 R.drawable.img_banner_bg_2,
-                R.drawable.img_banner_bg_3
+                R.drawable.img_banner_bg_3,
+                R.drawable.img_banner_bg_4
             )
 
             val foreground =
