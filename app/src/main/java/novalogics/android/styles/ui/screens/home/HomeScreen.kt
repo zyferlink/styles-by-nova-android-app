@@ -49,6 +49,7 @@ import novalogics.android.styles.ui.common.component.LoadingScreen
 import novalogics.android.styles.ui.common.component.StyledText
 import novalogics.android.styles.ui.theme.StylesByNovaTheme
 import novalogics.android.styles.ui.screens.home.component.CustomDropdown
+import novalogics.android.styles.ui.screens.home.component.LoadingBar
 import novalogics.android.styles.ui.screens.home.component.SearchBarStatic
 import novalogics.android.styles.ui.screens.home.component.TopAppBar
 import novalogics.android.styles.ui.screens.home.component.ViewPagerDotsIndicator
@@ -132,8 +133,11 @@ fun ScreenUiContent(
             }
         }
 
+
         if (uiState.isLoading) {
-            LoadingScreen()
+            LoadingBar(
+                isLoading = true,
+            )
         }
     }
 }
