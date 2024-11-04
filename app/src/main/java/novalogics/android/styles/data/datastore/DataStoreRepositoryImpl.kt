@@ -3,37 +3,48 @@ package novalogics.android.styles.data.datastore
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-import novalogics.android.styles.data.type.FashionCategory
+import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
+import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
 class DataStoreRepositoryImpl @Inject constructor(
     private val dataStore: DataStore<Preferences>
-) {
-    // Generic method to save a string value using a key
-    suspend fun saveString(key: DataStoreStringKey, value: String) {
+) : DataStoreRepository {
+
+    override suspend fun putString(key: String, value: String) {
+        val preferencesKey = stringPreferencesKey(key)
         dataStore.edit { preferences ->
-            preferences[key.key as Preferences.Key<String>]  = value
+            preferences[preferencesKey] = value
         }
     }
 
-    // Generic method to retrieve a string value using a key
-    fun getStringFlow(key: DataStoreStringKey): Flow<String?> {
-        return dataStore.data.map { preferences ->
-            preferences[key.key] as String
+    override suspend fun putInt(key: String, value: Int) {
+        val preferencesKey = intPreferencesKey(key)
+        dataStore.edit { preferences ->
+            preferences[preferencesKey] = value
         }
     }
 
-
-    val getFashionCategory: Flow<String> = dataStore.data
-        .map { pref ->
-            pref[DataStoreStringKey.FashionCategory.key] ?: FashionCategory.DEFAULT.name
+    override suspend fun getString(key: String): String? {
+        return try {
+            val preferencesKey = stringPreferencesKey(key)
+            val preferences = dataStore.data.first()
+            preferences[preferencesKey]
+        }catch (e: Exception){
+            e.printStackTrace()
+            null
         }
+    }
 
-    suspend fun saveFashionCategory(value: String) {
-        dataStore.edit { preferences ->
-            preferences[DataStoreStringKey.FashionCategory.key] = value
+    override suspend fun getInt(key: String): Int? {
+        return try {
+            val preferencesKey = intPreferencesKey(key)
+            val preferences = dataStore.data.first()
+            preferences[preferencesKey]
+        }catch (e: Exception){
+            e.printStackTrace()
+            null
         }
     }
 
