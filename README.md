@@ -299,10 +299,6 @@ ____
 
  </details>
 
-
-
-
-
 <br>
 
 #
@@ -314,6 +310,9 @@ ____
 ## 2. Project Resources
 
 <br> 
+
+<details>
+ <summary> View Project Resources Details </summary>
 
 *Import : **Fonts** from*
 ```yaml
@@ -341,8 +340,7 @@ https://material-foundation.github.io/material-theme-builder/
 ```
 
 
-
-
+ </details>
 
 
 <br>
