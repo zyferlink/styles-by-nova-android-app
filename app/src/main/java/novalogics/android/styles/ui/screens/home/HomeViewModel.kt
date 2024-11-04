@@ -58,7 +58,7 @@ class HomeViewModel @Inject constructor(
             _uiState.update { currentUiState ->
                 currentUiState.copy(
                     isLoading = true,
-                    bannerItemList = localDataRepository.getBannerUrls(),
+                    bannerItems = localDataRepository.getBannerUrls(),
                 )
             }
 
@@ -79,7 +79,7 @@ class HomeViewModel @Inject constructor(
             FashionCategory.WOMEN -> {
                 _uiState.update { currentUiState ->
                     currentUiState.copy(
-                        eventCategoryList = localDataRepository.getWomenEvents()
+                        eventCategories = localDataRepository.getWomenEvents()
                     )
                 }
 
@@ -88,7 +88,7 @@ class HomeViewModel @Inject constructor(
             FashionCategory.MEN -> {
                 _uiState.update { currentUiState ->
                     currentUiState.copy(
-                        eventCategoryList = localDataRepository.getMenEvents()
+                        eventCategories = localDataRepository.getMenEvents()
                     )
                 }
                 saveFashionCategory(FashionCategory.MEN.name)

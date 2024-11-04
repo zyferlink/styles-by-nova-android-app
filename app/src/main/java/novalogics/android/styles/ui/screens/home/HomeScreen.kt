@@ -42,9 +42,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import novalogics.android.styles.R
-import novalogics.android.styles.data.model.home.Event
 import novalogics.android.styles.data.model.home.EventEntity
-import novalogics.android.styles.data.repository.local.LocalDataRepositoryImpl
 import novalogics.android.styles.data.repository.local.StaticRepository
 import novalogics.android.styles.data.type.FashionCategory
 import novalogics.android.styles.ui.common.component.LoadingScreen
@@ -117,7 +115,7 @@ fun ScreenUiContent(
             ) {
                 item {
                     HorizontalPager(
-                        bannerUrls = uiState.bannerItemList,
+                        bannerUrls = uiState.bannerItems,
                         category = uiState.selectedFashionCategory
                     )
                 }
@@ -128,7 +126,7 @@ fun ScreenUiContent(
                 }
                 item {
                     EventGridView(
-                        events = uiState.eventCategoryList,
+                        events = uiState.eventCategories,
                     )
                 }
             }
@@ -307,8 +305,8 @@ fun HomeScreenPreview(){
     val context = LocalContext.current
 
     val uiState = HomeUiState(
-        bannerItemList = StaticRepository.getBannerUrls(),
-        eventCategoryList = StaticRepository.getWomenEvents(context = context),
+        bannerItems = StaticRepository.getBannerUrls(),
+        eventCategories = StaticRepository.getWomenEvents(context = context),
     )
     StylesByNovaTheme {
 
