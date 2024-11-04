@@ -1,6 +1,7 @@
 package novalogics.android.styles.ui.screens.home
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -62,7 +63,7 @@ class HomeViewModel @Inject constructor(
                 )
             }
 
-            handleCategoryChangeActions(FashionCategory.WOMEN)
+            handleIntent(HomeIntent.CategoryChangeActions(getFashionCategory()))
 
             delay(DELAY_2_SECONDS)
 
@@ -75,6 +76,7 @@ class HomeViewModel @Inject constructor(
 
     private fun handleCategoryChangeActions(category: FashionCategory){
         when (category) {
+            FashionCategory.DEFAULT,
             FashionCategory.WOMEN -> {
                 _uiState.update { currentUiState ->
                     currentUiState.copy(
@@ -92,7 +94,7 @@ class HomeViewModel @Inject constructor(
                 }
                 saveFashionCategory(FashionCategory.MEN.name)
             }
-            FashionCategory.KIDS -> {}
+         //   FashionCategory.KIDS -> {}
             else -> {}
         }
     }
@@ -103,8 +105,18 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun getFashionCategory(): String? = runBlocking {
-        dataStoreRepository.getString(DataStoreKeys.FashionCategory.key)
+    private fun getFashionCategory(): FashionCategory {
+        return try {
+            val category = getFashionCategoryAsString()
+            Log.d("HomeViewModel", "getFashionCategory: $category")
+            FashionCategory.valueOf(category)
+        } catch (e: IllegalArgumentException) {
+            FashionCategory.DEFAULT
+        }
+    }
+
+    private fun getFashionCategoryAsString(): String = runBlocking {
+        dataStoreRepository.getString(DataStoreKeys.FashionCategory.key) ?: FashionCategory.DEFAULT.name
     }
 
 

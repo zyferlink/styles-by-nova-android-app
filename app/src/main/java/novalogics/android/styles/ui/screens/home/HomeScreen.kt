@@ -104,7 +104,8 @@ fun ScreenUiContent(
             )
 
             HeaderSearchWithDropdown(
-                onDropdownSelectionChange = onDropdownSelectionChange
+                onDropdownSelectionChange = onDropdownSelectionChange,
+                selectedCategory = uiState.selectedFashionCategory
             )
 
             LazyColumn(
@@ -139,6 +140,7 @@ fun ScreenUiContent(
 @Composable
 fun HeaderSearchWithDropdown(
     onDropdownSelectionChange: (FashionCategory) -> Unit,
+    selectedCategory: FashionCategory
 ) {
     Row(modifier = Modifier
         .fillMaxWidth()
@@ -156,6 +158,7 @@ fun HeaderSearchWithDropdown(
 
         CustomDropdown(
             onSelectionChange = onDropdownSelectionChange,
+            selectedCategory = selectedCategory,
             modifier = Modifier.weight(0.3f)
         )
     }
