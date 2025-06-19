@@ -179,15 +179,15 @@
 <!-- Experimental → Feature → Development → Release → Staging → Main/Production   -->
 
 
-[branch-main]:  https://github.com/NovaLogics/styles-by-nova-android-app/tree/main
-[branch-development]:  https://github.com/NovaLogics/styles-by-nova-android-app/tree/development
-[branch-staging]:  https://github.com/NovaLogics/styles-by-nova-android-app/tree/staging
+[branch-main]:  https://github.com/ZyferLink/styles-by-nova-android-app/tree/main
+[branch-development]:  https://github.com/ZyferLink/styles-by-nova-android-app/tree/development
+[branch-staging]:  https://github.com/ZyferLink/styles-by-nova-android-app/tree/staging
 
-[branch-feature-NAME]:  https://github.com/dizzcode/nova-styles-android-app/tree/staging
+[branch-feature-NAME]:  https://github.com/ZyferLink/nova-styles-android-app/tree/staging
 
-[branch-hotfix-NAME]:  https://github.com/dizzcode/nova-styles-android-app/tree/staging
+[branch-hotfix-NAME]:  https://github.com/ZyferLink/nova-styles-android-app/tree/staging
 
-[branch-bugfix-NAME]:  https://github.com/nova-styles-android-app/tree/staging
+[branch-bugfix-NAME]:  https://github.com/ZyferLink/nova-styles-android-app/tree/staging
 
 <br>  
 
